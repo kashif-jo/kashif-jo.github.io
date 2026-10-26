@@ -244,7 +244,7 @@ const T = {
   history:"سجل الفحوصات",report:"نزّل التقرير",hclear:"امسح السجل",histEmpty:"لسا ما فحصت شي. كل فحص بينحفظ هون عشان تشوف النسبة كيف بتنزل مع التعديل.",
   footer:"© 2026 المهندس محمد غرايبة · BTEC Electrical Engineering",
   vOk:"غالبًا مكتوب من إنسان",vMid:"مختلط أو مش واضح",vBad:"غالبًا مكتوب بالذكاء الاصطناعي",
-  fUni:"تشابه أطوال الجمل",fPh:"عبارات الذكاء الاصطناعي",fSt:"بدايات جمل رسمية متكررة",fCol:"كلام عفوي وشخصي (بيقلل النسبة)",fTech:"محتوى تقني وأرقام (بيقلل النسبة)",
+  fUni:"تشابه أطوال الجمل",fPh:"عبارات الذكاء الاصطناعي",fSt:"بدايات جمل رسمية متكررة",fCol:"كلام عفوي وشخصي (بيقلل النسبة)",fTech:"محتوى تقني وأرقام (بيقلل النسبة)",fVoc:"مفردات إنشائية عامة",fChat:"تنسيق وعبارات المحادثة (نقاط، عناوين، إليك…)",
   similar:"متقاربة",varied:"متنوعة",many:"كثيرة",few:"قليلة",present:"موجود",absent:"ما في تقريبًا",phr:"عبارة",
   short:n=>`النص قصير (${n} كلمة)، النتيجة أقل دقة.`,tooShort:"النص قصير كتير، حط 15 كلمة على الأقل.",
   sampleNote:"النص الموجود مثال للتجربة، امسحه وحط نصك.",done:"تم الفحص.",reading:"عم بقرأ الملف…",
@@ -263,7 +263,7 @@ const T = {
   history:"Check history",report:"Download report",hclear:"Clear history",histEmpty:"Nothing checked yet. Each check is saved here so you can watch the score drop as you edit.",
   footer:"© 2026 Eng. Mohammad Gharaibeh · BTEC Electrical Engineering",
   vOk:"Likely human-written",vMid:"Mixed or unclear",vBad:"Likely AI-written",
-  fUni:"Sentence length uniformity",fPh:"AI phrases",fSt:"Repeated formal openers",fCol:"Casual, personal voice (lowers score)",fTech:"Technical content and figures (lowers score)",
+  fUni:"Sentence length uniformity",fPh:"AI phrases",fSt:"Repeated formal openers",fCol:"Casual, personal voice (lowers score)",fTech:"Technical content and figures (lowers score)",fVoc:"Generic essay vocabulary",fChat:"Chat-style formatting and phrases",
   similar:"similar",varied:"varied",many:"many",few:"few",present:"present",absent:"almost none",phr:"phrases",
   short:n=>`Short text (${n} words), so the score is less reliable.`,tooShort:"Text is too short. Use at least 15 words.",
   sampleNote:"The text above is an example. Clear it and paste yours.",done:"Checked.",reading:"Reading file…",
@@ -322,37 +322,80 @@ for(const L of ["ar","en"]){const R=RULES[L];COMP[L]={
 const count=(re,s)=>{re.lastIndex=0;let n=0;while(re.exec(s))n++;return n;};
 function setStatus(msg,err){statusEl.textContent=msg||"";statusEl.className="status"+(err?" err":"");}
 
-/* ---------- quick analysis ---------- */
+/* ---------- quick analysis (v2: weighted signals → logistic score) ---------- */
+const EXTRA = {
+ ar:{
+  /* abstract "essay" vocabulary that ChatGPT-style Arabic leans on heavily */
+  vocab:["تعزيز","يعزز","تعزز","تحسين","يحسن","تطوير","يطور","تطويرها","الفعالية","فعالية","فعال","فعالة","الكفاءة","كفاءة","الاستدامة","مستدام","مستدامة","الابتكار","مبتكرة","التحديات","تحديات","الفرص","فرص","المستقبل","مستقبل","الأفراد","المجتمعات","المجتمع","المجالات","مجالات","الجوانب","جوانب","العوامل","الأساليب","الاستراتيجيات","استراتيجيات","أهمية","الأهمية","دور","دورًا","الحديثة","الحديث","المختلفة","مختلف","العديد","مجموعة","العالم","عالمنا","التكنولوجيا","التقنية","التقنيات","تساهم","يساهم","يسهم","تسهم","يساعد","تساعد","يتيح","تتيح","يمكّن","تمكين","توفير","يوفر","توفر","ضمان","لضمان","تحقيق","يحقق","الحفاظ","تقليل","زيادة","الأداء","الجودة","الموثوقية","الدقة","الوعي","الشامل","شامل","شاملة","بشكل","بصورة","حيوي","حيوية","أساسي","أساسية","محوري","محورية","بارز","بارزة","فعّال","فعّالة","متزايد","متزايدة","المتسارع","المتسارعة","النمو","التطور","التطورات","التقدم","الإيجابي","إيجابي","السلبي","المستمر","مستمر","الأمثل","الأمان","السلامة","المناسب","المناسبة","التأكد","سهولة","عالية","العالية","الضروري","يجب","الصحيحة","المهمة","المهم","يتميز","تتميز","مثالي","مثالية","متنوعة","واسعة"],
+  chat:["بالطبع","إليك","اليك","يسعدني","هل ترغب","هل تريد","إذا كنت بحاجة","إذا احتجت","لا تتردد","أتمنى أن يكون","آمل أن","يمكنني مساعدتك","كمساعد","كنموذج ذكاء اصطناعي","فيما يلي","ما يلي","نصائح","خطوات","ملخص","الخلاصة","باختصار","لنستعرض","دعونا","دعنا","ومن هنا","بناءً على ما سبق","مما سبق","نستنتج","خلاصة القول"],
+  phr:["مما يجعله","مما يجعلها","مما يجعل","الخيار الأفضل","الخيار الأمثل","بشكل صحيح","بشكل دقيق","بشكل مستمر","من المهم","من الضروري","ينبغي","يتميز ب","تتميز ب","مقارنةً ب","بدقة عالية","بكفاءة عالية","سهولة الاستخدام","على حد سواء","سواء كان","لا سيما","ولا سيما","بالغ الأهمية","يُعد","تُعد","يُعتبر","تُعتبر","يُستخدم","تُستخدم","يتكون من","تتكون من","يتيح","تتيح"],
+  personal:["أنا","انا","جربت","قست","لاحظت","شفت","حسيت","عملت","عملنا","قمنا","قمت","استخدمت","استخدمنا","ركبت","ركبنا","وصلت","وصلنا","طلع","طلعت","معي","عندي","عنا","احنا","نحن قمنا","الأستاذ","المختبر","بالمختبر","الحصة","صفنا","لكنني","لكني","أنني","إنني","كنت","أكن","أبي","أمي","أخي","أختي","جدي","جدتي","صديقي","والدي","والدتي","بيتنا","مدرستي","صفي","نفسي","عندي","لي"]
+ },
+ en:{
+  vocab:["enhance","enhancing","enhances","improve","improving","foster","fostering","ensure","ensuring","efficiency","efficient","effectively","effective","innovation","innovative","sustainable","sustainability","challenges","opportunities","future","individuals","communities","society","various","numerous","significant","significantly","essential","crucial","vital","key","overall","landscape","realm","transformative","transform","potential","valuable","insights","impact","impactful","holistic","dynamic","diverse","ultimately","additionally","furthermore","moreover","however","approach","strategies","framework","aspects","factors","enables","empower","empowering","streamline","optimize","robust","comprehensive","integral","pivotal","notable","notably","evolving","ever-evolving","rapidly","increasingly","growth","advancements","technological","responsibly","ethical","considerations","navigate","harness","leverage","typically","appropriate","important","popular","choice","accuracy","accurate","correctly","versatile","reliable","reliability","convenient","commonly","widely","ease","ensures","proper","properly","ideal","wide","range","variety"],
+  chat:["certainly","here's","here is","i hope this helps","let me know","feel free","as an ai","in summary","to summarize","key takeaways","in conclusion","overall,","whether you're","whether you are","if you'd like","would you like","happy to help","great question","sure!","below are","the following"],
+  phr:["making them","making it","it is also important","it's also important","known for their","known for its","a popular choice","ease of use","typically consists","consists of","you should","should be","is essential","are essential","plays a","stands out","a variety of","a range of","both professionals","whether you","not only","but also","as well as","in order to","such as"],
+  personal:["i","i'm","i've","i'd","me","my","we","our","yesterday","today","teacher","lab","class","tried","measured","noticed","got","felt"]
+ }
+};
+const COMP2={};
+for(const L of ["ar","en"]){const E=EXTRA[L];COMP2[L]={vocab:E.vocab.map(w=>wordRe(norm(w))),phr:E.phr.map(p=>({p,re:wordRe(norm(p))})),chat:E.chat.map(p=>({p,re:wordRe(norm(p))})),personal:E.personal.map(w=>wordRe(norm(w)))};}
+const sig=z=>1/(1+Math.exp(-z));
+const FMT_RE=/^\s*(?:[-*•▪◦●]|\d+[.)\-]|#{1,6}\s|\*\*)|[\u{1F300}-\u{1FAFF}✅✔➡⭐]|\*\*[^*]+\*\*|^[^.!؟?\n]{2,60}[:：]\s*$/mu;
+
 function analyze(text){
-  const R=RULES[lang], C=COMP[lang], eng=$("engMode").checked;
+  const R=RULES[lang], C=COMP[lang], C2=COMP2[lang], eng=$("engMode").checked, AR=lang==="ar";
   const sents=[]; let m; R.split.lastIndex=0; while((m=R.split.exec(text))) sents.push(m[0]);
   const real=sents.filter(s=>words(s).length); const N=words(text).length;
   if(N<15) return null;
   const lens=real.map(s=>words(s).length), mean=lens.reduce((a,b)=>a+b,0)/lens.length;
   const sd=Math.sqrt(lens.reduce((a,b)=>a+(b-mean)**2,0)/lens.length), cv=mean?sd/mean:0;
-  const found=new Map(); let ph=0,col=0,st=0,tech=0,ri=0;
-  const scored=sents.map(s=>{
-    const w=words(s); if(!w.length) return {s,score:-1};
-    const n=norm(s); let sc=32,h=0;
+  const lines=text.split(/\n+/).filter(l=>l.trim());
+  const fmtLines=lines.filter(l=>FMT_RE.test(l)).length;
+  const found=new Map(); let ph=0,col=0,st=0,tech=0,voc=0,chat=0,pers=0,tan=0,dig=0;
+  const per=sents.map(s=>{
+    const w=words(s); if(!w.length) return {s,blank:true};
+    const n=norm(s); let h=0,v=0,c=0,tk=0,ch=0,p=0;
     for(const x of C.phrases){ if(eng&&x.soft) continue; const k=count(x.re,n); if(k){h+=k;found.set(x.p,(found.get(x.p)||0)+k);} }
-    ph+=h; sc+=Math.min(h,3)*20;
-    let c=0; for(const re of C.colloq) c+=count(re,n); col+=c; sc-=Math.min(c,3)*(lang==="en"?9:17);
-    let tk=0; if(eng){ for(const re of C.tech) tk+=count(re,n); if(/\d/.test(s)) tk+=2; } tech+=tk; sc-=Math.min(tk,3)*6;
+    for(const x of C2.phr){ const k=count(x.re,n); if(k){h+=k*.6;found.set(x.p,(found.get(x.p)||0)+k);} }
+    for(const x of C2.chat){ const k=count(x.re,n); if(k){ch+=k;found.set(x.p,(found.get(x.p)||0)+k);} }
+    for(const re of C2.vocab) v+=count(re,n);
+    for(const re of C.colloq) c+=count(re,n);
+    for(const re of C2.personal) p+=count(re,n);
+    if(AR){ const sfx=(n.match(/(?:^|[^\p{L}])\p{L}{2,}(?:تني|ني|نا|تنا)(?=$|[^\p{L}])/gu)||[]).filter(x=>!/(حياتنا|عالمنا|مجتمعنا|بلادنا|عصرنا|يمكننا|علينا|لدينا|هنا|اننا|إننا|أننا)$/.test(x.trim())).length; p+=sfx*.5; }
+    if(eng){ for(const re of C.tech) tk+=count(re,n); }
+    const d=(s.match(/\d+(?:[.,]\d+)?/g)||[]).length;
     const first=norm(w[0]).replace(/[^\p{L}]/gu,"");
-    if(C.starters.includes(first)&&!(eng&&first==="حيث")){sc+=10;st++;}
-    if(Math.abs(w.length-mean)<mean*.3) sc+=eng?4:8;
-    if(lang==="ar"&&/[ًٌٍ]/.test(s)) sc+=5;
-    if(/[!؟?]/.test(s)) sc-=6;
-    if(w.length<6) sc-=10;
-    if(!eng&&/\d/.test(s)) sc-=5;
-    return {s,score:clamp(sc,2,98),i:ri++};
+    const isSt=C.starters.includes(first)&&!(eng&&first==="حيث");
+    const tn=AR?(s.match(/[ًٌٍ]/g)||[]).length:0;
+    const fm=FMT_RE.test(s);
+    ph+=h;voc+=v;col+=c;tech+=tk;chat+=ch;pers+=p;dig+=d;tan+=tn; if(isSt) st++;
+    return {s,w:w.length,h,v,c,tk,ch,p,d,isSt,tn,fm};
   });
-  const ss=scored.filter(x=>x.score>=0).map(x=>x.score), avg=ss.reduce((a,b)=>a+b,0)/ss.length;
-  const f={uniform:clamp((.8-cv)/.55,0,1)*(eng?.7:1),phrases:clamp(ph/N*100/2.5,0,1),starters:clamp(st/real.length/.4,0,1),
-           colloq:clamp(col/N*100/(lang==="en"?4:2),0,1),tech:eng?clamp(tech/N*100/6,0,1):0};
-  const base=18+30*f.uniform+34*f.phrases+14*f.starters-36*f.colloq-12*f.tech;
-  const pct=Math.round(clamp(.6*base+.4*avg,3,97));
-  return {pct,f,found,scored,N,nS:real.length,mean,phCount:ph};
+  const k100=x=>x/N*100;
+  const f={
+    phrases: clamp(k100(ph)/2.2,0,1),
+    vocab:   clamp((k100(voc)-(AR?2:3))/(AR?8:7),0,1),
+    chat:    clamp(chat/2,0,1),
+    format:  clamp(fmtLines/Math.max(lines.length,1)/.35,0,1),
+    starters:clamp(st/real.length/.35,0,1),
+    uniform: clamp((.75-cv)/.5,0,1)*(eng?.7:1),
+    colloq:  clamp(k100(col+pers*(AR?1:.6))/(AR?3:5),0,1),
+    tech:    eng?clamp(k100(tech+dig)/6,0,1):0,
+    tanween: AR?clamp(k100(tan)/3,0,1):0,
+    noTrace: (col+pers+dig===0 && !/[!؟?]/.test(text))?1:0
+  };
+  const z=-2.4 + 2.6*f.phrases + 2.4*f.vocab + 1.8*f.chat + 1.4*f.format + 1.0*f.starters + 1.1*f.uniform + 0.9*f.tanween + 1.0*f.noTrace
+          - 3.2*f.colloq - 1.3*f.tech;
+  const pct=Math.round(clamp(100*sig(z*.85),3,97));
+  const scored=[]; let ri=0;
+  for(const x of per){
+    if(x.blank){scored.push({s:x.s,score:-1});continue;}
+    let zs=-1.5 + 1.2*Math.min(x.h,3) + 0.5*Math.min(x.v,5) + 1.4*Math.min(x.ch,2) + (x.isSt?.7:0) + (x.fm?.9:0) + (x.tn?.35:0)
+          - 1.2*Math.min(x.c+x.p,3) - (eng?.35*Math.min(x.tk+x.d,4):.25*Math.min(x.d,3)) - (x.w<6?.6:0) + 0.45*z;
+    scored.push({s:x.s,score:Math.round(clamp(100*sig(zs),2,98)),i:ri++});
+  }
+  return {pct,f,found,scored,N,nS:real.length,mean,phCount:ph+chat,voc,z};
 }
 
 /* ---------- rendering ---------- */
@@ -374,7 +417,7 @@ function render(){
   $("src").textContent=t(deepRes?"srcMix":"srcQuick");
   $("pair").hidden=!deepRes; $("summary").hidden=!(deepRes&&deepRes.summary);
   if(deepRes){$("q-p").textContent=r.pct+"%";$("d-p").textContent=deepRes.overall+"%";$("summary").textContent=deepRes.summary||"";}
-  const rows=[[t("fUni"),r.f.uniform,r.f.uniform>.5?t("similar"):t("varied")],[t("fPh"),r.f.phrases,`${r.phCount} ${t("phr")}`],
+  const rows=[[t("fPh"),r.f.phrases,`${Math.round(r.phCount)} ${t("phr")}`],[t("fVoc"),r.f.vocab,r.f.vocab>.5?t("many"):t("few")],[t("fChat"),Math.max(r.f.chat,r.f.format),Math.max(r.f.chat,r.f.format)>.3?t("present"):t("absent")],[t("fUni"),r.f.uniform,r.f.uniform>.5?t("similar"):t("varied")],
     [t("fSt"),r.f.starters,r.f.starters>.5?t("many"):t("few")],[t("fCol"),r.f.colloq,r.f.colloq>.2?t("present"):t("absent")]];
   if($("engMode").checked) rows.push([t("fTech"),r.f.tech,r.f.tech>.2?t("present"):t("absent")]);
   $("factors").innerHTML=rows.map(([n,val,s])=>`<li><span>${n}</span><span class="v">${s}</span><span class="bar"><i style="width:${Math.round(val*100)}%"></i></span></li>`).join("")
