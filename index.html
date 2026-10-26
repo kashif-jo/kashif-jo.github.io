@@ -4,14 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>كاشف AI | فحص نسبة الذكاء الاصطناعي بالعربي والإنجليزي</title>
-<meta name="description" content="كاشف AI من تطوير المهندس محمد غرايبة: موقع مجاني يفحص نسبة الذكاء الاصطناعي في النصوص والتقارير بالعربي والإنجليزي، ويلوّن الجمل المشكوك فيها، ويقرأ ملفات Word وPDF.">
-<meta name="keywords" content="كاشف AI, كاشف الذكاء الاصطناعي, فحص نسبة الذكاء الاصطناعي, نسبة AI, كشف ChatGPT, Kashif AI, AI detector Arabic, محمد غرايبة">
+<meta name="description" content="كاشف AI من تصميم وتطوير المهندس محمد غرايبة: موقع مجاني يفحص نسبة الذكاء الاصطناعي في النصوص والتقارير بالعربي والإنجليزي، ويقدّر إذا الأسلوب أقرب لـ ChatGPT أو Gemini أو Claude، ويقارن قبل وبعد التعديل، ويقرأ ملفات Word وPDF.">
+<meta name="keywords" content="كاشف AI, كاشف الذكاء الاصطناعي, فحص نسبة الذكاء الاصطناعي, نسبة AI, كشف ChatGPT, كشف Gemini, كشف Claude, Kashif AI, AI detector Arabic, محمد غرايبة">
 <meta name="author" content="المهندس محمد غرايبة">
 <meta property="og:title" content="كاشف AI">
 <meta property="og:description" content="افحص نسبة الذكاء الاصطناعي في نصك قبل ما تسلّمه. بالعربي والإنجليزي.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#14324A">
-<!-- GOOGLE-VERIFICATION -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgYXJpYS1oaWRkZW49InRydWUiPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgcng9IjE0IiBmaWxsPSIjMUM0NTY2Ii8+PHBhdGggZD0iTTE0IDQyQTE4IDE4IDAgMCAxIDIzIDI2LjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzVCQzM4NyIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMjMgMjYuNEExOCAxOCAwIDAgMSA0MSAyNi40IiBmaWxsPSJub25lIiBzdHJva2U9IiNFMkFFNDkiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik00MSAyNi40QTE4IDE4IDAgMCAxIDUwIDQyIiBmaWxsPSJub25lIiBzdHJva2U9IiNFNDZGNkUiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTMyIDQyTDQzLjUgMzIuNCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMuMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGNpcmNsZSBjeD0iMzIiIGN5PSI0MiIgcj0iMy42IiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMTgiIHk9IjQ5IiB3aWR0aD0iMjgiIGhlaWdodD0iMy40IiByeD0iMS43IiBmaWxsPSIjOURCOENDIi8+PC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y9S0VJNTWQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y9S0VJNTWQ');</script>
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
@@ -42,11 +45,17 @@
   --ok:#5BC387; --warn:#E2AE49; --bad:#E46F6E;
   --ok-bg:#163226; --warn-bg:#3A2C12; --bad-bg:#3C1B1C; color-scheme:dark}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:15px;line-height:1.6;margin:0}
 .band{background:var(--plate);color:var(--plate-ink);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:26px 22px}
 .band-in{max-width:1140px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px 28px;align-items:flex-end;justify-content:space-between}
 .brand{display:flex;flex-direction:column;gap:2px;min-width:0}
-.brand .eng{font-size:1.02rem;font-weight:500;color:var(--plate-ink)}
+.brand-top{display:flex;align-items:center;gap:12px}
+.logo{width:clamp(40px,7vw,54px);height:auto;flex:none;border-radius:12px}
+.brand .byline{font-size:1rem;font-weight:500;color:var(--plate-ink)}
+.band-side{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.linkbtn{border:1px solid var(--plate-sub);background:transparent;color:var(--plate-ink);padding:7px 14px;border-radius:999px;font-family:var(--f-ui);font-size:.9rem;cursor:pointer}
+.linkbtn:hover{background:rgba(255,255,255,.08)}
 .brand .name{font-size:clamp(1.7rem,4.6vw,2.7rem);font-weight:700;line-height:1.15;text-wrap:balance}
 .brand .tool{font-size:1rem;color:var(--plate-sub);font-weight:300}
 .brand .tool b{color:var(--plate-ink);font-weight:500}
@@ -123,20 +132,56 @@ button.b:hover:not(:disabled){filter:brightness(1.07)}
 .hist .p{font-family:var(--f-num);font-weight:600;width:46px;text-align:center;border-radius:6px;padding:2px 0}
 .hist .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .hist .d{font-family:var(--f-num);font-size:.74rem;color:var(--muted);text-align:end}
-footer{text-align:center;font-size:.82rem;color:var(--muted);padding-block:6px 0}
+footer{text-align:center;font-size:.82rem;color:var(--muted);padding-block:6px 0;display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center}
+footer button{background:none;border:0;color:var(--accent);font:inherit;cursor:pointer;text-decoration:underline;padding:0}
+.models{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+.models li{display:grid;grid-template-columns:1fr auto;gap:3px 10px;font-size:.88rem}
+.models li.top span:first-child{font-weight:600}
+.models .bar i{background:var(--warn)} .models li.top .bar i{background:var(--bad)}
+.models .v{font-family:var(--f-num);font-size:.78rem;color:var(--muted)}
+.fbtn{align-self:flex-start;background:none;border:0;color:var(--accent);font:inherit;font-size:.85rem;cursor:pointer;text-decoration:underline;padding:0}
+.fb{border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
+.fb fieldset{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 16px}
+.fb legend{font-size:.85rem;font-weight:500;margin-bottom:6px;padding:0}
+.fb label{font-size:.88rem;display:flex;align-items:center;gap:6px;cursor:pointer}
+.fb select,.fb input[type=text]{font:inherit;font-size:.9rem;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink);padding:6px 8px;max-width:100%}
+.cmp-in{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.cmp-in{grid-template-columns:1fr}}
+.cmp-in > div{display:flex;flex-direction:column;gap:8px;min-width:0}
+.cmp-in textarea{min-height:170px}
+.cmp-res{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center}
+.cmp-card{background:var(--bg);border-radius:8px;padding:12px;text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center}
+.cmp-card b{font-family:var(--f-num);font-size:2rem;line-height:1;font-variant-numeric:tabular-nums}
+.cmp-card small{color:var(--muted);font-size:.78rem}
+.delta{font-family:var(--f-num);font-weight:600;font-size:1.05rem;text-align:center;padding:6px 10px;border-radius:999px}
+.diff{font-size:1.02rem;line-height:2.05;max-height:420px;overflow:auto;background:var(--bg);border-radius:8px;padding:12px 14px}
+.diff del{background:var(--bad-bg);color:var(--bad);text-decoration:line-through;border-radius:3px;padding:0 2px}
+.diff ins{background:var(--ok-bg);color:var(--ok);text-decoration:none;border-radius:3px;padding:0 2px}
+.overlay{position:fixed;inset:0;background:rgba(8,16,24,.55);display:flex;align-items:center;justify-content:center;z-index:50;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.about{background:var(--panel);color:var(--ink);border-radius:14px;max-width:560px;width:100%;max-height:100%;overflow:auto;padding:24px;display:flex;flex-direction:column;gap:14px}
+.about-head{display:flex;align-items:center;gap:14px}
+.about-head .logo{width:56px}
+.about h2{margin:0;font-size:1.35rem;text-wrap:balance}
+.about p{margin:0;line-height:1.8}
+.about .role{color:var(--muted);font-size:.92rem}
+.contact{display:flex;flex-direction:column;gap:6px;background:var(--bg);border-radius:8px;padding:10px 12px;font-size:.92rem}
+.contact a{color:var(--accent)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
 <div id="app" class="lang-ar" dir="rtl" lang="ar">
 <div class="band"><div class="band-in">
   <div class="brand">
-    <span class="eng" data-t="engTitle">المهندس محمد غرايبة</span>
-    <span class="name" data-t="name">كاشف AI</span>
+    <div class="brand-top"><svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1C4566"/><path d="M14 42A18 18 0 0 1 23 26.4" fill="none" stroke="#5BC387" stroke-width="6" stroke-linecap="round"/><path d="M23 26.4A18 18 0 0 1 41 26.4" fill="none" stroke="#E2AE49" stroke-width="6"/><path d="M41 26.4A18 18 0 0 1 50 42" fill="none" stroke="#E46F6E" stroke-width="6" stroke-linecap="round"/><path d="M32 42L43.5 32.4" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><circle cx="32" cy="42" r="3.6" fill="#fff"/><rect x="18" y="49" width="28" height="3.4" rx="1.7" fill="#9DB8CC"/></svg><span class="name" data-t="name">كاشف AI</span></div>
+    <span class="byline" data-t="byline">تصميم وتطوير المهندس محمد غرايبة</span>
     <span class="tool"><b data-t="toolName">افحص نسبة الذكاء الاصطناعي</b> · <span data-t="tagline">قبل ما تسلّم تقريرك</span></span>
   </div>
-  <div class="seg" role="group" aria-label="Language">
-    <button id="m-ar" aria-pressed="true">العربي</button>
-    <button id="m-en" aria-pressed="false">English</button>
+  <div class="band-side">
+    <button class="linkbtn" id="about-open" data-t="aboutBtn">عن المطور</button>
+    <div class="seg" role="group" aria-label="Language">
+      <button id="m-ar" aria-pressed="true">العربي</button>
+      <button id="m-en" aria-pressed="false">English</button>
+    </div>
   </div>
 </div></div>
 
@@ -190,6 +235,26 @@ footer{text-align:center;font-size:.82rem;color:var(--muted);padding-block:6px 0
       <ul class="factors" id="factors"></ul>
       <div class="label" data-t="phrasesLbl">عبارات بيكررها الذكاء الاصطناعي</div>
       <div class="chips" id="chips"></div>
+      <div class="label" data-t="modelsLbl">أقرب أداة لأسلوب النص</div>
+      <ul class="models" id="models"></ul>
+      <button class="fbtn" id="fb-open" data-t="fbOpen">النتيجة غلط؟ بلّغنا</button>
+      <form class="fb" id="fb" hidden>
+        <fieldset>
+          <legend data-t="fbQ">مين كتب النص فعليًا؟</legend>
+          <label><input type="radio" name="fbTruth" id="fb-h" value="human"> <span data-t="fbHuman">إنسان</span></label>
+          <label><input type="radio" name="fbTruth" id="fb-a" value="ai"> <span data-t="fbAi">ذكاء اصطناعي</span></label>
+          <label><input type="radio" name="fbTruth" id="fb-m" value="mixed"> <span data-t="fbMixed">مخلوط</span></label>
+        </fieldset>
+        <label><span data-t="fbTool">الأداة</span>
+          <select id="fb-tool"><option value="">—</option><option>ChatGPT</option><option>Gemini</option><option>Claude</option><option>Ninja</option><option>Copilot</option><option>DeepSeek</option><option>Perplexity</option><option value="other" data-t="fbOther">غير هيك</option><option value="unknown" data-t="fbUnknown">مش متأكد</option></select>
+        </label>
+        <input type="text" id="fb-note" data-tp="fbNote" maxlength="300">
+        <label><input type="checkbox" id="fb-send" checked> <span data-t="fbSendText">ابعث النص مع البلاغ عشان نحسّن الكشف</span></label>
+        <div class="row">
+          <button class="b primary" type="submit" data-t="fbSubmit">ابعث البلاغ</button>
+          <button class="b" type="button" id="fb-cancel" data-t="close">سكّر</button>
+        </div>
+      </form>
       <div class="note" data-t="note">كل مواقع الكشف بتغلط، حتى الكبيرة. استخدم النتيجة عشان تعرف شو تعدّل، مش كدليل نهائي.</div>
     </section>
   </div>
@@ -212,6 +277,35 @@ footer{text-align:center;font-size:.82rem;color:var(--muted);padding-block:6px 0
     </div>
   </section>
 
+  <section class="panel" id="compare">
+    <div class="label" data-t="cmpTitle">قارن قبل وبعد</div>
+    <div class="cmp-in">
+      <div>
+        <div class="row spread"><span class="label" data-t="cmpA">النسخة الأولى</span><button class="fbtn" id="cmp-fillA" data-t="cmpFill">حط النص الحالي</button></div>
+        <textarea id="cmpA" class="txtfont" data-tp="cmpPhA"></textarea>
+      </div>
+      <div>
+        <div class="row spread"><span class="label" data-t="cmpB">النسخة المعدّلة</span><button class="fbtn" id="cmp-fillB" data-t="cmpFill">حط النص الحالي</button></div>
+        <textarea id="cmpB" class="txtfont" data-tp="cmpPhB"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <button class="b primary" id="cmp-go" data-t="cmpGo">قارن</button>
+      <button class="b" id="cmp-clear" data-t="clear">امسح</button>
+      <span class="status" id="cmp-status"></span>
+    </div>
+    <div id="cmp-out" hidden>
+      <div class="cmp-res">
+        <div class="cmp-card"><small data-t="cmpA">النسخة الأولى</small><b id="cmp-pa">–</b><span class="verdict" id="cmp-va"></span></div>
+        <div class="delta" id="cmp-delta"></div>
+        <div class="cmp-card"><small data-t="cmpB">النسخة المعدّلة</small><b id="cmp-pb">–</b><span class="verdict" id="cmp-vb"></span></div>
+      </div>
+      <ul class="factors" id="cmp-notes" style="margin-top:14px"></ul>
+      <div class="label" style="margin-top:14px" data-t="cmpDiff">شو اللي تغيّر (الأحمر انشال، الأخضر انضاف)</div>
+      <div class="diff txtfont" id="cmp-diff"></div>
+    </div>
+  </section>
+
   <section class="panel">
     <div class="row spread">
       <div class="label" data-t="history">سجل الفحوصات</div>
@@ -223,8 +317,18 @@ footer{text-align:center;font-size:.82rem;color:var(--muted);padding-block:6px 0
     <ul class="hist" id="hist"></ul>
   </section>
 
-  <footer data-t="footer">© 2026 المهندس محمد غرايبة · BTEC Electrical Engineering</footer>
+  <footer><span data-t="footer">© 2026 كاشف AI · تصميم وتطوير المهندس محمد غرايبة</span><button id="about-open2" data-t="aboutBtn">عن المطور</button></footer>
 </div></main>
+
+<div class="overlay" id="about" hidden role="dialog" aria-modal="true" aria-labelledby="about-h">
+  <div class="about">
+    <div class="about-head"><svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1C4566"/><path d="M14 42A18 18 0 0 1 23 26.4" fill="none" stroke="#5BC387" stroke-width="6" stroke-linecap="round"/><path d="M23 26.4A18 18 0 0 1 41 26.4" fill="none" stroke="#E2AE49" stroke-width="6"/><path d="M41 26.4A18 18 0 0 1 50 42" fill="none" stroke="#E46F6E" stroke-width="6" stroke-linecap="round"/><path d="M32 42L43.5 32.4" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><circle cx="32" cy="42" r="3.6" fill="#fff"/><rect x="18" y="49" width="28" height="3.4" rx="1.7" fill="#9DB8CC"/></svg><div><h2 id="about-h" data-t="aboutName">المهندس محمد غرايبة</h2><div class="role" data-t="aboutRole">طالب هندسة كهربائية · BTEC (Pearson)</div></div></div>
+    <p data-t="aboutP1">صممت وطورت كاشف AI عشان أساعد الطلاب يفحصوا تقاريرهم قبل التسليم، ويعرفوا وين أسلوبهم بيبين آلي ويعدّلوه بإيدهم.</p>
+    <p data-t="aboutP2">الموقع بيفحص النصوص بالعربي والإنجليزي، وبيقرأ ملفات Word وPDF، وبيحاول يعرف إذا الأسلوب أقرب لـ ChatGPT أو Gemini أو Claude أو أدوات ثانية. النتيجة تقدير بيساعدك تعدّل، مش حكم نهائي.</p>
+    <div class="contact" id="contact" hidden></div>
+    <div class="row"><button class="b primary" id="about-close" data-t="close">سكّر</button></div>
+  </div>
+</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
@@ -233,7 +337,7 @@ footer{text-align:center;font-size:.82rem;color:var(--muted);padding-block:6px 0
 <script>
 /* ---------- text for both languages ---------- */
 const T = {
- ar:{engTitle:"المهندس محمد غرايبة",name:"كاشف AI",toolName:"افحص نسبة الذكاء الاصطناعي",tagline:"قبل ما تسلّم تقريرك",
+ ar:{engTitle:"المهندس محمد غرايبة",byline:"تصميم وتطوير المهندس محمد غرايبة",aboutBtn:"عن المطور",name:"كاشف AI",modelsLbl:"أقرب أداة لأسلوب النص",modelsNone:"ما في بصمة واضحة لأداة معينة.",modelsHuman:"النص أقرب لكتابة إنسان، فما في أداة نحددها.",modelsHint:"تقدير من الأسلوب: الأدوات بتتشابه، وأي تعديل باليد بيغيّر البصمة.",fbOpen:"النتيجة غلط؟ بلّغنا",fbQ:"مين كتب النص فعليًا؟",fbHuman:"إنسان",fbAi:"ذكاء اصطناعي",fbMixed:"مخلوط",fbTool:"الأداة",fbOther:"غير هيك",fbUnknown:"مش متأكد",fbNote:"ملاحظة (اختياري)",fbSendText:"ابعث النص مع البلاغ عشان نحسّن الكشف",fbSubmit:"ابعث البلاغ",fbPick:"اختار مين كتب النص أول.",fbSent:"وصل البلاغ، شكرًا! رح نستخدمه نحسّن الكشف.",fbOff:"إرسال البلاغات بيشتغل من الموقع العام kashif-jo.github.io",fbErr:"ما زبط الإرسال، جرب كمان شوي.",cmpTitle:"قارن قبل وبعد",cmpA:"النسخة الأولى",cmpB:"النسخة المعدّلة",cmpFill:"حط النص الحالي",cmpPhA:"الصق النسخة الأولى هون…",cmpPhB:"الصق النسخة بعد التعديل هون…",cmpGo:"قارن",cmpDiff:"شو اللي تغيّر (الأحمر انشال، الأخضر انضاف)",cmpNeed:"حط النسختين، وكل وحدة 15 كلمة على الأقل.",cmpDown:n=>`النسبة نزلت ${n} نقطة`,cmpUp:n=>`النسبة طلعت ${n} نقطة`,cmpSame:"النسبة ما تغيرت",cmpWords:(a,r)=>`انضاف ${a} كلمة وانشال ${r} كلمة`,cmpGone:"عبارات آلية شلتها",cmpStill:"عبارات آلية لسا موجودة",cmpBig:"النصوص طويلة كثير، فالمقارنة صارت جملة بجملة.",aboutName:"المهندس محمد غرايبة",aboutRole:"طالب هندسة كهربائية · BTEC (Pearson)",aboutP1:"صممت وطورت كاشف AI عشان أساعد الطلاب يفحصوا تقاريرهم قبل التسليم، ويعرفوا وين أسلوبهم بيبين آلي ويعدّلوه بإيدهم.",aboutP2:"الموقع بيفحص النصوص بالعربي والإنجليزي، وبيقرأ ملفات Word وPDF، وبيحاول يعرف إذا الأسلوب أقرب لـ ChatGPT أو Gemini أو Claude أو أدوات ثانية. النتيجة تقدير بيساعدك تعدّل، مش حكم نهائي.",contactLbl:"تواصل معي",toolName:"افحص نسبة الذكاء الاصطناعي",tagline:"قبل ما تسلّم تقريرك",
   inLabel:"النص",drop:'اسحب ملف هون أو <b>اختار ملف</b> · docx · pdf · txt',ph:"الصق النص هون…",
   engMode:"وضع التقرير الهندسي",engHint:"ما بيحسب المصطلحات والأرقام والوحدات ضدك",check:"افحص النص",deep:"تحليل عميق بـ Claude",clear:"امسح",
   sw:"كلمة",ss:"جملة",sa:"معدل طول الجملة",sr:"دقائق قراءة",readout:"القراءة",quick:"المقياس السريع",deepLbl:"تحليل Claude",
@@ -242,7 +346,7 @@ const T = {
   after:"النص بعد الفحص · اضغط على أي جملة عشان تعيد صياغتها",lgHi:"غالبًا آلي",lgMid:"مشكوك فيه",lgLo:"طبيعي",
   outEmpty:'اضغط "افحص النص" وبتطلع الجمل هون ملوّنة.',rwTitle:"إعادة صياغة مقترحة",apply:"استبدل بالنص",copy:"انسخ",copied:"انسخت",close:"سكّر",
   history:"سجل الفحوصات",report:"نزّل التقرير",hclear:"امسح السجل",histEmpty:"لسا ما فحصت شي. كل فحص بينحفظ هون عشان تشوف النسبة كيف بتنزل مع التعديل.",
-  footer:"© 2026 المهندس محمد غرايبة · BTEC Electrical Engineering",
+  footer:"© 2026 كاشف AI · تصميم وتطوير المهندس محمد غرايبة",
   vOk:"غالبًا مكتوب من إنسان",vMid:"مختلط أو مش واضح",vBad:"غالبًا مكتوب بالذكاء الاصطناعي",
   fUni:"تشابه أطوال الجمل",fPh:"عبارات الذكاء الاصطناعي",fSt:"بدايات جمل رسمية متكررة",fCol:"كلام عفوي وشخصي (بيقلل النسبة)",fTech:"محتوى تقني وأرقام (بيقلل النسبة)",fVoc:"مفردات إنشائية عامة",fChat:"تنسيق وعبارات المحادثة (نقاط، عناوين، إليك…)",
   similar:"متقاربة",varied:"متنوعة",many:"كثيرة",few:"قليلة",present:"موجود",absent:"ما في تقريبًا",phr:"عبارة",
@@ -252,7 +356,7 @@ const T = {
   srcQuick:"المصدر: المقياس السريع",srcMix:"المصدر: دمج المقياس السريع مع تحليل Claude",deepRun:"عم بحلل…",deepDone:"خلص التحليل العميق.",deepErr:"التحليل العميق ما زبط هالمرة. المقياس السريع شغال عادي.",deepRate:"في ضغط، استنى دقيقة وجرب.",
   rwLocal:"(اقتراح سريع: شلت العبارات الآلية. للتحليل الأقوى استخدم Claude)",rwRun:"عم بكتب صياغة جديدة…",
   saved:"انحفظ التقرير.",copiedReport:"التقرير انسخ، الصقه بأي ملف.",lang:"العربية"},
- en:{engTitle:"Eng. Mohammad Gharaibeh",name:"Kashif AI",toolName:"Check how much of your text is AI",tagline:"before you hand it in",
+ en:{engTitle:"Eng. Mohammad Gharaibeh",byline:"Designed & developed by Eng. Mohammad Gharaibeh",aboutBtn:"About the developer",name:"Kashif AI",modelsLbl:"Closest AI tool by style",modelsNone:"No clear fingerprint of a specific tool.",modelsHuman:"The text reads as human-written, so there is no tool to point to.",modelsHint:"A style estimate: tools resemble each other, and hand edits change the fingerprint.",fbOpen:"Wrong result? Tell us",fbQ:"Who actually wrote the text?",fbHuman:"A person",fbAi:"AI",fbMixed:"Mixed",fbTool:"Tool",fbOther:"Other",fbUnknown:"Not sure",fbNote:"Note (optional)",fbSendText:"Send the text with the report so we can improve detection",fbSubmit:"Send report",fbPick:"Choose who wrote the text first.",fbSent:"Report received, thank you! We will use it to improve detection.",fbOff:"Reports are sent from the public site kashif-jo.github.io",fbErr:"Sending failed. Try again in a moment.",cmpTitle:"Compare before and after",cmpA:"First version",cmpB:"Edited version",cmpFill:"Use current text",cmpPhA:"Paste the first version here…",cmpPhB:"Paste the edited version here…",cmpGo:"Compare",cmpDiff:"What changed (red removed, green added)",cmpNeed:"Add both versions, at least 15 words each.",cmpDown:n=>`Score dropped ${n} points`,cmpUp:n=>`Score rose ${n} points`,cmpSame:"Score did not change",cmpWords:(a,r)=>`${a} words added, ${r} words removed`,cmpGone:"AI phrases you removed",cmpStill:"AI phrases still there",cmpBig:"The texts are long, so the comparison is sentence by sentence.",aboutName:"Eng. Mohammad Gharaibeh",aboutRole:"Electrical engineering student · BTEC (Pearson)",aboutP1:"I designed and built Kashif AI to help students check their reports before handing them in, see where their writing reads as machine-made, and fix it themselves.",aboutP2:"The site checks Arabic and English text, reads Word and PDF files, and estimates whether the style is closest to ChatGPT, Gemini, Claude or other tools. The score is an estimate to guide your edits, not a final verdict.",contactLbl:"Contact me",toolName:"Check how much of your text is AI",tagline:"before you hand it in",
   inLabel:"Text",drop:'Drop a file here or <b>choose a file</b> · docx · pdf · txt',ph:"Paste your text here…",
   engMode:"Engineering report mode",engHint:"Technical terms, numbers and units don't count against you",check:"Check text",deep:"Deep analysis with Claude",clear:"Clear",
   sw:"words",ss:"sentences",sa:"avg sentence length",sr:"min read",readout:"Reading",quick:"Quick meter",deepLbl:"Claude analysis",
@@ -261,7 +365,7 @@ const T = {
   after:"Checked text · click any sentence to rewrite it",lgHi:"Likely AI",lgMid:"Suspicious",lgLo:"Natural",
   outEmpty:'Press "Check text" and the sentences will show here, colour-coded.',rwTitle:"Suggested rewrite",apply:"Replace in text",copy:"Copy",copied:"Copied",close:"Close",
   history:"Check history",report:"Download report",hclear:"Clear history",histEmpty:"Nothing checked yet. Each check is saved here so you can watch the score drop as you edit.",
-  footer:"© 2026 Eng. Mohammad Gharaibeh · BTEC Electrical Engineering",
+  footer:"© 2026 Kashif AI · Designed & developed by Eng. Mohammad Gharaibeh",
   vOk:"Likely human-written",vMid:"Mixed or unclear",vBad:"Likely AI-written",
   fUni:"Sentence length uniformity",fPh:"AI phrases",fSt:"Repeated formal openers",fCol:"Casual, personal voice (lowers score)",fTech:"Technical content and figures (lowers score)",fVoc:"Generic essay vocabulary",fChat:"Chat-style formatting and phrases",
   similar:"similar",varied:"varied",many:"many",few:"few",present:"present",absent:"almost none",phr:"phrases",
@@ -341,7 +445,51 @@ const EXTRA = {
 const COMP2={};
 for(const L of ["ar","en"]){const E=EXTRA[L];COMP2[L]={vocab:E.vocab.map(w=>wordRe(norm(w))),phr:E.phr.map(p=>({p,re:wordRe(norm(p))})),chat:E.chat.map(p=>({p,re:wordRe(norm(p))})),personal:E.personal.map(w=>wordRe(norm(w)))};}
 const sig=z=>1/(1+Math.exp(-z));
+/* pronouns and contractions: AI chat tools use them too, so they count as weak human evidence */
+const WEAK_EN=["i","i'm","i've","i'd","me","my","we","our","it's","that's","don't","didn't","can't","won't","wasn't","isn't","doesn't","you'd","you're"].map(w=>wordRe(w));
 const FMT_RE=/^\s*(?:[-*•▪◦●]|\d+[.)\-]|#{1,6}\s|\*\*)|[\u{1F300}-\u{1FAFF}✅✔➡⭐]|\*\*[^*]+\*\*|^[^.!؟?\n]{2,60}[:：]\s*$/mu;
+
+/* ---------- which AI tool does the style resemble ---------- */
+/* Style fingerprints per tool. These are tendencies, not proof: tools copy each other and users edit output. */
+const MODELS = [
+ {id:"chatgpt", name:"ChatGPT",
+  ar:["بالطبع!","بكل تأكيد","إليك","سؤال رائع","يلعب دورًا محوريًا","تلعب دورًا محوريًا","علاوة على ذلك","في الختام","وفي الختام","من الجدير بالذكر","في عالمنا اليوم","في عصرنا الحالي","جزءًا لا يتجزأ","حجر الزاوية","آمل أن يكون","أتمنى أن يكون","هل ترغب","إذا كنت بحاجة","لا تتردد","نقلة نوعية","آفاقًا جديدة"],
+  en:["certainly!","absolutely!","great question","delve","tapestry","in today's fast-paced","it's important to note","it is important to note","in conclusion","i hope this helps","let me know if","testament to","ever-evolving","navigate the","embark","unlock the","a game-changer","in the realm of"]},
+ {id:"gemini", name:"Gemini",
+  ar:["إليك تفصيل","إليك نظرة","إليك بعض","النقاط الرئيسية","الاعتبارات الرئيسية","ضع في اعتبارك","من المهم ملاحظة","بشكل أساسي","في جوهره","نظرة عامة","هل تود","أخبرني إذا","يمكنني أيضًا","هل تريد مني","باختصار:","الخلاصة:","ملاحظة:","مثال:"],
+  en:["here's a breakdown","here's a look","here are some","key considerations","key takeaways","in essence","essentially,","keep in mind","it's crucial","in short,","let's break","overview","would you like me to","i can also","note:","important note"]},
+ {id:"claude", name:"Claude",
+  ar:["يسعدني","أود أن أوضح","مع ذلك،","بصراحة،","في الواقع،","من المفيد","دعني","الفكرة الأساسية","بشكل جوهري","تجدر الإشارة"],
+  en:["i'd be happy to","happy to help","it's worth noting","worth noting","that said,","genuinely","nuanced","straightforward","i should note","i want to be","here's the thing","to be clear","i'd suggest","the core idea","the key idea"]},
+ {id:"other", name:"Ninja · Copilot · DeepSeek · Perplexity",
+  ar:["المصادر","وفقًا لـ","وفقا ل","بحسب المصادر","نتائج البحث","حسب البحث","الإجابة المختصرة","الإجابة:","الخطوة 1","خطوة 1","التحليل:"],
+  en:["sources:","according to","search results","based on my search","based on the search","short answer","answer:","step 1","analysis:","let me search","i found"]}
+];
+const MCOMP = {};
+for(const L of ["ar","en"]) MCOMP[L] = MODELS.map(m=>({id:m.id, list:m[L].map(p=>({p, re:wordRe(norm(p).replace(/[!:،,]$/,""))}))}));
+
+function modelFingerprint(text){
+  const n = norm(text), L = MCOMP[lang], s = {};
+  const hits = [];
+  for(const m of L){
+    let k = 0;
+    for(const x of m.list){ const c = count(x.re, n); if(c){ k += c; hits.push([x.p, c]); } }
+    s[m.id] = k;
+  }
+  /* layout habits */
+  const emoji = (text.match(/[\u{1F300}-\u{1FAFF}✅✔➡⭐✨]/gu)||[]).length;
+  const boldNum = (text.match(/^\s*\d+[.)]\s*\*\*/gm)||[]).length;
+  const heads = (text.match(/^#{2,3}\s/gm)||[]).length;
+  const starBul = (text.match(/^\s*\*\s{2,}\S/gm)||[]).length;
+  const dash = (text.match(/\s—\s|—/g)||[]).length;
+  const cites = (text.match(/\[\d{1,2}\]|【\d+】/g)||[]).length;
+  s.chatgpt += emoji*0.8 + boldNum*0.7;
+  s.gemini  += heads*0.8 + starBul*0.6;
+  s.claude  += Math.min(dash,6)*0.6;
+  s.other   += cites*1.2;
+  const total = Object.values(s).reduce((a,b)=>a+b,0);
+  return {s, total, hits};
+}
 
 function analyze(text){
   const R=RULES[lang], C=COMP[lang], C2=COMP2[lang], eng=$("engMode").checked, AR=lang==="ar";
@@ -362,6 +510,7 @@ function analyze(text){
     for(const re of C2.vocab) v+=count(re,n);
     for(const re of C.colloq) c+=count(re,n);
     for(const re of C2.personal) p+=count(re,n);
+    if(!AR){ let wk=0; for(const re of WEAK_EN) wk+=count(re,n); c=Math.max(0,c-wk*.75); p=Math.max(0,p-wk*.75); }
     if(AR){ const sfx=(n.match(/(?:^|[^\p{L}])\p{L}{2,}(?:تني|ني|نا|تنا)(?=$|[^\p{L}])/gu)||[]).filter(x=>!/(حياتنا|عالمنا|مجتمعنا|بلادنا|عصرنا|يمكننا|علينا|لدينا|هنا|اننا|إننا|أننا)$/.test(x.trim())).length; p+=sfx*.5; }
     if(eng){ for(const re of C.tech) tk+=count(re,n); }
     const d=(s.match(/\d+(?:[.,]\d+)?/g)||[]).length;
@@ -385,7 +534,10 @@ function analyze(text){
     tanween: AR?clamp(k100(tan)/3,0,1):0,
     noTrace: (col+pers+dig===0 && !/[!؟?]/.test(text))?1:0
   };
-  const z=-2.4 + 2.6*f.phrases + 2.4*f.vocab + 1.8*f.chat + 1.4*f.format + 1.0*f.starters + 1.1*f.uniform + 0.9*f.tanween + 1.0*f.noTrace
+  const fp=modelFingerprint(text);
+  f.sig=clamp(fp.total/4,0,1);
+  f.colloq*=1-0.6*f.sig;
+  const z=-2.4 + 2.6*f.phrases + 2.4*f.vocab + 1.8*f.chat + 1.4*f.format + 1.0*f.starters + 1.1*f.uniform + 0.9*f.tanween + 1.0*f.noTrace + 2.0*f.sig
           - 3.2*f.colloq - 1.3*f.tech;
   const pct=Math.round(clamp(100*sig(z*.85),3,97));
   const scored=[]; let ri=0;
@@ -395,7 +547,8 @@ function analyze(text){
           - 1.2*Math.min(x.c+x.p,3) - (eng?.35*Math.min(x.tk+x.d,4):.25*Math.min(x.d,3)) - (x.w<6?.6:0) + 0.45*z;
     scored.push({s:x.s,score:Math.round(clamp(100*sig(zs),2,98)),i:ri++});
   }
-  return {pct,f,found,scored,N,nS:real.length,mean,phCount:ph+chat,voc,z};
+  for(const [p,c] of fp.hits) if(!found.has(p)) found.set(p,c);
+  return {pct,f,found,scored,N,nS:real.length,mean,phCount:ph+chat,voc,z,fp};
 }
 
 /* ---------- rendering ---------- */
@@ -408,7 +561,8 @@ function finalPct(){ if(!last) return null; return deepRes? Math.round(.35*last.
 function sentScore(x){ if(!deepRes||deepRes.map[x.i]==null) return x.score; return Math.round(.35*x.score+.65*deepRes.map[x.i]); }
 
 function render(){
-  const r=last; if(!r){ $("out").innerHTML=`<span class="empty">${t("outEmpty")}</span>`; return; }
+  const r=last; if(!r){ resetReadout(); $("out").innerHTML=`<span class="empty">${t("outEmpty")}</span>`; return; }
+  $("fb-open").hidden=false;
   const p=finalPct();
   $("needle").style.transform=`rotate(${-90+p*1.8}deg)`;
   $("pct").textContent=p+"%";
@@ -423,11 +577,29 @@ function render(){
   $("factors").innerHTML=rows.map(([n,val,s])=>`<li><span>${n}</span><span class="v">${s}</span><span class="bar"><i style="width:${Math.round(val*100)}%"></i></span></li>`).join("")
     +(r.N<60?`<li><span style="color:var(--warn)">${t("short")(r.N)}</span></li>`:"");
   $("chips").innerHTML=r.found.size?[...r.found].sort((a,b)=>b[1]-a[1]).map(([q,c])=>`<span class="chip">${esc(q)}${c>1?" ×"+c:""}</span>`).join(""):`<span class="empty">${t("none")}</span>`;
+  renderModels(r,p);
   $("out").innerHTML=r.scored.map(x=>{
     if(x.score<0) return x.s.replace(/\n/g,"<br>");
     const sc=sentScore(x), cls=sc>=62?"s s-hi":sc>=45?"s s-mid":"s";
     return `<span class="${cls}${x.i===selIdx?" sel":""}" data-i="${x.i}" title="${sc}%" tabindex="0">${esc(x.s).replace(/\n/g,"<br>")}</span>`;
   }).join("");
+}
+function renderModels(r,p){
+  const el=$("models");
+  if(p<35){ el.innerHTML=`<li><span class="empty" style="grid-column:1/-1">${t("modelsHuman")}</span></li>`; return; }
+  let sc={...r.fp.s};
+  if(deepRes&&deepRes.source){ const k={chatgpt:"chatgpt",gemini:"gemini",claude:"claude",other:"other"}[deepRes.source]; if(k) sc[k]+=Math.max(2,r.fp.total*.6); }
+  const tot=Object.values(sc).reduce((a,b)=>a+b,0);
+  if(tot<1){ el.innerHTML=`<li><span class="empty" style="grid-column:1/-1">${t("modelsNone")}</span></li><li><span class="empty" style="grid-column:1/-1">${t("modelsHint")}</span></li>`; return; }
+  const rows=MODELS.map(m=>({name:m.name,v:sc[m.id]/tot})).sort((a,b)=>b.v-a.v);
+  el.innerHTML=rows.map((x,i)=>`<li class="${i===0?"top":""}"><span>${x.name}</span><span class="v">${Math.round(x.v*100)}%</span><span class="bar"><i style="width:${Math.round(x.v*100)}%"></i></span></li>`).join("")
+    +`<li><span class="empty" style="grid-column:1/-1">${t("modelsHint")}</span></li>`;
+}
+function resetReadout(){
+  $("needle").style.transform="rotate(-90deg)"; $("pct").textContent="–";
+  $("verdict").hidden=true; $("src").textContent=""; $("pair").hidden=true; $("summary").hidden=true;
+  $("factors").innerHTML=""; $("chips").innerHTML=`<span class="empty">${t("none")}</span>`; $("models").innerHTML="";
+  $("fb").hidden=true; $("fb-open").hidden=true;
 }
 function stats(){
   const w=words(txt.value).length, R=RULES[lang]; let n=0,m; R.split.lastIndex=0;
@@ -448,10 +620,10 @@ function renderHist(){const h=loadHist(), el=$("hist");
 
 /* ---------- actions ---------- */
 function run(){
-  deepRes=null; selIdx=-1; $("rw").hidden=true;
+  deepRes=null; selIdx=-1; $("rw").hidden=true; $("fb").hidden=true;
   last=analyze(txt.value);
-  if(!last){setStatus(t("tooShort"),true);return;}
-  setStatus(t("done")); render(); pushHist(finalPct());
+  if(!last){setStatus(t("tooShort"),true);render();return;}
+  setStatus(t("done")); render(); pushHist(finalPct()); try{window.gtag&&gtag('event','check_text',{lang,score_band:last.pct<35?'human':last.pct<65?'mixed':'ai'});}catch(_){}
 }
 function setLang(L){
   lang=L; app.className="lang-"+L; app.dir=L==="ar"?"rtl":"ltr"; app.lang=L;
@@ -459,6 +631,7 @@ function setLang(L){
   document.querySelectorAll("[data-t]").forEach(e=>e.textContent=T[L][e.dataset.t]);
   document.querySelectorAll("[data-th]").forEach(e=>e.innerHTML=T[L][e.dataset.th]);
   document.querySelectorAll("[data-tp]").forEach(e=>e.placeholder=T[L][e.dataset.tp]);
+  $("about").dir=app.dir; renderContact();
   document.title=L==="ar"?"كاشف AI | فحص نسبة الذكاء الاصطناعي بالعربي والإنجليزي":"Kashif AI | AI text detector (Arabic & English)";
   try{localStorage.setItem(HK+"-lang",L);}catch(e){}
 }
@@ -471,7 +644,7 @@ function switchLang(L){
 $("m-ar").onclick=()=>switchLang("ar"); $("m-en").onclick=()=>switchLang("en");
 $("go").onclick=run;
 $("engMode").onchange=()=>{ if(last) run(); };
-$("clear").onclick=()=>{txt.value="";last=null;deepRes=null;stats();setStatus("");$("rw").hidden=true;render();txt.focus();};
+$("clear").onclick=()=>{txt.value="";last=null;deepRes=null;selIdx=-1;stats();setStatus("");$("rw").hidden=true;render();txt.focus();};
 txt.addEventListener("input",stats);
 
 /* rewrite */
@@ -506,7 +679,8 @@ $("deep").onclick=async()=>{
   const list=last.scored.filter(x=>x.score>=0).slice(0,150);
   const body=list.map(x=>`[${x.i}] ${x.s.trim().slice(0,400)}`).join("\n");
   const prompt=`You are a careful AI-generated-text detector. Judge how likely each numbered sentence was written by an AI model (ChatGPT, Gemini, Claude) rather than by a student, using style signals: stock phrases, generic claims without specifics, uniform rhythm, over-polished transitions, lack of personal detail or real measurements. ${$("engMode").checked?"The text is from a high-school electrical engineering report; technical terms, formulas, units and measured values are normal for a human and are not evidence of AI. ":""}Language of the text: ${T[lang].lang}. Be calibrated: plain, specific, slightly imperfect writing should score low.
-Return only JSON: {"overall": integer 0-100, "summary": "two short sentences in ${lang==="ar"?"Arabic (Levantine-friendly, simple)":"English"} explaining the main reasons and what to change", "sentences": [{"i": number, "score": integer 0-100}]}
+Also judge which tool the style most resembles: "chatgpt", "gemini", "claude", "other" (Ninja, Copilot, DeepSeek, Perplexity and similar) or "human".
+Return only JSON: {"overall": integer 0-100, "source": one of the five values, "summary": "two short sentences in ${lang==="ar"?"Arabic (Levantine-friendly, simple)":"English"} explaining the main reasons and what to change", "sentences": [{"i": number, "score": integer 0-100}]}
 
 Sentences:
 ${body}`;
@@ -514,7 +688,7 @@ ${body}`;
     const res=await sample.json(prompt,{modelTier:"default"});
     const map={}; (res.sentences||[]).forEach(s=>{ if(Number.isFinite(+s.i)&&Number.isFinite(+s.score)) map[+s.i]=clamp(Math.round(+s.score),0,100); });
     const ov=clamp(Math.round(+res.overall),0,100); if(!Number.isFinite(ov)) throw {code:"bad"};
-    deepRes={overall:ov,summary:String(res.summary||""),map};
+    deepRes={overall:ov,summary:String(res.summary||""),map,source:String(res.source||"").toLowerCase()};
     render(); pushHist(finalPct()); setStatus(t("deepDone"));
   }catch(e){
     if(e&&e.code==="not_granted"){window._sample=null;btn.hidden=true;}
@@ -569,9 +743,86 @@ drop.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDe
 ["dragleave","drop"].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove("over");}));
 drop.addEventListener("drop",e=>{const f=e.dataTransfer.files[0];if(f)readFile(f);});
 
+
+/* ---------- compare before / after ---------- */
+const cmpStatus=$("cmp-status");
+function tokens(s){return s.split(/(\s+)/).filter(x=>x.length);}
+function lcsDiff(a,b){
+  const n=a.length,m=b.length; const W=m+1; const d=new Uint32Array((n+1)*(m+1));
+  for(let i=n-1;i>=0;i--) for(let j=m-1;j>=0;j--) d[i*W+j]= a[i]===b[j]? d[(i+1)*W+j+1]+1 : Math.max(d[(i+1)*W+j],d[i*W+j+1]);
+  const out=[]; let i=0,j=0;
+  while(i<n&&j<m){ if(a[i]===b[j]){out.push(["=",a[i]]);i++;j++;} else if(d[(i+1)*W+j]>=d[i*W+j+1]) out.push(["-",a[i++]]); else out.push(["+",b[j++]]); }
+  while(i<n) out.push(["-",a[i++]]); while(j<m) out.push(["+",b[j++]]);
+  return out;
+}
+function sentencesOf(s){const R=RULES[lang];const o=[];let m;R.split.lastIndex=0;while((m=R.split.exec(s)))o.push(m[0]);return o;}
+function vClass(p){return "verdict "+(p<35?"v-ok":p<65?"v-warn":"v-bad");}
+function vText(p){return t(p<35?"vOk":p<65?"vMid":"vBad");}
+function runCompare(){
+  const A=$("cmpA").value, B=$("cmpB").value;
+  const ra=analyze(A), rb=analyze(B);
+  if(!ra||!rb){ cmpStatus.textContent=t("cmpNeed"); cmpStatus.className="status err"; $("cmp-out").hidden=true; return; }
+  cmpStatus.textContent=""; cmpStatus.className="status";
+  $("cmp-pa").textContent=ra.pct+"%"; $("cmp-pb").textContent=rb.pct+"%";
+  $("cmp-va").className=vClass(ra.pct); $("cmp-va").textContent=vText(ra.pct);
+  $("cmp-vb").className=vClass(rb.pct); $("cmp-vb").textContent=vText(rb.pct);
+  const dlt=rb.pct-ra.pct, de=$("cmp-delta");
+  de.textContent=(dlt<0?"↓ ":dlt>0?"↑ ":"= ")+Math.abs(dlt);
+  de.className="delta "+(dlt<0?"v-ok":dlt>0?"v-bad":"v-warn"); de.title=dlt<0?t("cmpDown")(-dlt):dlt>0?t("cmpUp")(dlt):t("cmpSame");
+  let ta=tokens(A), tb=tokens(B), big=false;
+  if(ta.length*tb.length>9e6){ ta=sentencesOf(A); tb=sentencesOf(B); big=true; }
+  const df=lcsDiff(ta,tb);
+  let add=0,rem=0;
+  $("cmp-diff").innerHTML=df.map(([k,x])=>{ const e=esc(x).replace(/\n/g,"<br>"); if(k==="=")return e; const w=/\S/.test(x)?words(x).length:0; if(k==="+"){add+=w;return /\S/.test(x)?`<ins>${e}</ins>`:e;} rem+=w; return /\S/.test(x)?`<del>${e}</del>`:""; }).join("");
+  const gone=[...ra.found.keys()].filter(p=>!rb.found.has(p)), still=[...rb.found.keys()];
+  const li=(a,b)=>`<li><span>${a}</span><span class="v">${b}</span></li>`;
+  $("cmp-notes").innerHTML=li(dlt<0?t("cmpDown")(-dlt):dlt>0?t("cmpUp")(dlt):t("cmpSame"),"")
+    +li(t("cmpWords")(add,rem),"")
+    +(gone.length?`<li><span>${t("cmpGone")}</span><span class="v"></span><span class="chips" style="grid-column:1/-1">${gone.slice(0,12).map(p=>`<span class="chip" style="background:var(--ok-bg);color:var(--ok)">${esc(p)}</span>`).join("")}</span></li>`:"")
+    +(still.length?`<li><span>${t("cmpStill")}</span><span class="v"></span><span class="chips" style="grid-column:1/-1">${still.slice(0,12).map(p=>`<span class="chip">${esc(p)}</span>`).join("")}</span></li>`:"")
+    +(big?`<li><span class="empty">${t("cmpBig")}</span></li>`:"");
+  $("cmp-out").hidden=false;
+}
+$("cmp-go").onclick=runCompare;
+$("cmp-fillA").onclick=()=>{$("cmpA").value=txt.value;};
+$("cmp-fillB").onclick=()=>{$("cmpB").value=txt.value;};
+$("cmp-clear").onclick=()=>{$("cmpA").value="";$("cmpB").value="";$("cmp-out").hidden=true;cmpStatus.textContent="";};
+
+/* ---------- wrong-result reports ---------- */
+/* Reports go to a Google Form owned by the site owner (fill REPORT_FORM to enable). */
+const REPORT_FORM = {url:"https://docs.google.com/forms/d/e/1FAIpQLSewX3TuZUxYWm4BhbK8OSHRkg1z5wg2-Z8RfwP60R8WpW61Pw/formResponse", f:{truth:"entry.710649524",tool:"entry.60735671",score:"entry.1286577476",lang:"entry.173069700",note:"entry.1802767712",text:"entry.568798575"}};
+const inArtifact = !!(window.claude && window.claude.use);
+$("fb-open").onclick=()=>{ const f=$("fb"); f.hidden=!f.hidden; if(!f.hidden) f.scrollIntoView({block:"nearest",behavior:"smooth"}); };
+$("fb-cancel").onclick=()=>{$("fb").hidden=true;};
+$("fb").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const truth=(document.querySelector('input[name="fbTruth"]:checked')||{}).value;
+  if(!truth){ setStatus(t("fbPick"),true); return; }
+  if(!REPORT_FORM||inArtifact){ setStatus(t("fbOff"),true); return; }
+  const F=REPORT_FORM.f, body=new URLSearchParams();
+  body.append(F.truth,truth); body.append(F.tool,$("fb-tool").value||""); body.append(F.score,String(finalPct()??""));
+  body.append(F.lang,lang); body.append(F.note,$("fb-note").value.slice(0,300));
+  if($("fb-send").checked) body.append(F.text,txt.value.slice(0,20000));
+  try{ await fetch(REPORT_FORM.url,{method:"POST",mode:"no-cors",body}); $("fb").reset(); $("fb").hidden=true; setStatus(t("fbSent")); try{window.gtag&&gtag('event','wrong_result_report',{truth});}catch(_){} }
+  catch(err){ setStatus(t("fbErr"),true); }
+});
+
+/* ---------- about ---------- */
+const CONTACT = []; /* e.g. [{label:"Instagram", value:"@name", href:"https://instagram.com/name"}] */
+function renderContact(){
+  const c=$("contact"); if(!CONTACT.length){c.hidden=true;return;}
+  c.hidden=false; c.innerHTML=`<strong>${t("contactLbl")}</strong>`+CONTACT.map(x=>`<span>${esc(x.label)}: ${x.href?`<a href="${esc(x.href)}" target="_blank" rel="noopener">${esc(x.value)}</a>`:`<span style="user-select:all">${esc(x.value)}</span>`}</span>`).join("");
+}
+function openAbout(){ $("about").hidden=false; $("about-close").focus(); }
+function closeAbout(){ $("about").hidden=true; }
+$("about-open").onclick=openAbout; $("about-open2").onclick=openAbout; $("about-close").onclick=closeAbout;
+$("about").addEventListener("click",e=>{ if(e.target.id==="about") closeAbout(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&!$("about").hidden) closeAbout(); });
+
 /* start */
 let startLang="ar"; try{startLang=localStorage.getItem(HK+"-lang")||"ar";}catch(e){}
 setLang(startLang==="en"?"en":"ar"); txt.value=SAMPLES[lang]; stats(); run(); renderHist(); setStatus(t("sampleNote"));
+if(location.hash==="#about") openAbout();
 /* light up Claude features where the viewer offers them; the page works fully without them */
 if(window.claude&&claude.use){
   claude.use("sample").then(s=>{ if(s){window._sample=s;$("deep").hidden=false;} }).catch(()=>{});
