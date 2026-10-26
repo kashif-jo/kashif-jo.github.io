@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>كاشف AI | فحص نسبة الذكاء الاصطناعي بالعربي والإنجليزي</title>
+<meta name="description" content="كاشف AI من تطوير المهندس محمد غرايبة: موقع مجاني يفحص نسبة الذكاء الاصطناعي في النصوص والتقارير بالعربي والإنجليزي، ويلوّن الجمل المشكوك فيها، ويقرأ ملفات Word وPDF.">
+<meta name="keywords" content="كاشف AI, كاشف الذكاء الاصطناعي, فحص نسبة الذكاء الاصطناعي, نسبة AI, كشف ChatGPT, Kashif AI, AI detector Arabic, محمد غرايبة">
+<meta name="author" content="المهندس محمد غرايبة">
+<meta property="og:title" content="كاشف AI">
+<meta property="og:description" content="افحص نسبة الذكاء الاصطناعي في نصك قبل ما تسلّمه. بالعربي والإنجليزي.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#14324A">
+<!-- GOOGLE-VERIFICATION -->
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;700&family=Noto+Naskh+Arabic:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: bench instrument. Name plate band on top, then input console beside an analog gauge readout, then the marked-up text and the log. */
+:root{
+  --bg:#E8ECEF; --panel:#F8FAFB; --ink:#13202A; --muted:#5A6772; --line:#C9D2D9;
+  --plate:#14324A; --plate-ink:#EEF4F8; --plate-sub:#9DB8CC;
+  --accent:#1F5E8C; --accent-soft:#D8E6F0;
+  --ok:#2C7A4C; --warn:#A8701A; --bad:#B03838;
+  --ok-bg:#DCEFE3; --warn-bg:#F6E9CC; --bad-bg:#F5D9D9;
+  --f-ui:"Readex Pro","Segoe UI",Tahoma,sans-serif;
+  --f-ar:"Noto Naskh Arabic","Simplified Arabic","Traditional Arabic",serif;
+  --f-en:"Source Serif 4","Times New Roman",Georgia,serif;
+  --f-num:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E151B; --panel:#162029; --ink:#E3E9EE; --muted:#92A0AC; --line:#293643;
+  --plate:#0B2236; --plate-ink:#EAF2F8; --plate-sub:#7FA3BE;
+  --accent:#6CACD9; --accent-soft:#1D3346;
+  --ok:#5BC387; --warn:#E2AE49; --bad:#E46F6E;
+  --ok-bg:#163226; --warn-bg:#3A2C12; --bad-bg:#3C1B1C; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E151B; --panel:#162029; --ink:#E3E9EE; --muted:#92A0AC; --line:#293643;
+  --plate:#0B2236; --plate-ink:#EAF2F8; --plate-sub:#7FA3BE;
+  --accent:#6CACD9; --accent-soft:#1D3346;
+  --ok:#5BC387; --warn:#E2AE49; --bad:#E46F6E;
+  --ok-bg:#163226; --warn-bg:#3A2C12; --bad-bg:#3C1B1C; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:15px;line-height:1.6;margin:0}
+.band{background:var(--plate);color:var(--plate-ink);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:26px 22px}
+.band-in{max-width:1140px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px 28px;align-items:flex-end;justify-content:space-between}
+.brand{display:flex;flex-direction:column;gap:2px;min-width:0}
+.brand .eng{font-size:1.02rem;font-weight:500;color:var(--plate-ink)}
+.brand .name{font-size:clamp(1.7rem,4.6vw,2.7rem);font-weight:700;line-height:1.15;text-wrap:balance}
+.brand .tool{font-size:1rem;color:var(--plate-sub);font-weight:300}
+.brand .tool b{color:var(--plate-ink);font-weight:500}
+.seg{display:inline-flex;border:1px solid var(--plate-sub);border-radius:999px;padding:3px;gap:3px}
+.seg button{border:0;background:transparent;color:var(--plate-ink);padding:7px 18px;border-radius:999px;font-family:var(--f-ui);font-size:.92rem;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--plate-ink);color:var(--plate);font-weight:600}
+main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:22px 40px}
+.wrap{max-width:1140px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+.grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.label{font-size:.76rem;color:var(--muted);letter-spacing:.03em;font-weight:500}
+.drop{border:1.5px dashed var(--line);border-radius:8px;padding:13px;text-align:center;color:var(--muted);cursor:pointer;font-size:.92rem}
+.drop.over{border-color:var(--accent);background:var(--accent-soft);color:var(--ink)}
+.drop b{color:var(--accent)}
+textarea{width:100%;min-height:250px;resize:vertical;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font-size:1.05rem;line-height:1.9;padding:12px 14px}
+.lang-ar .txtfont{font-family:var(--f-ar)} .lang-en .txtfont{font-family:var(--f-en)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.spread{justify-content:space-between}
+button.b{font-family:var(--f-ui);font-size:.93rem;border-radius:8px;padding:9px 15px;cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+button.b.primary{background:var(--accent);border-color:var(--accent);color:var(--panel);font-weight:600}
+button.b.deep{border-color:var(--accent);color:var(--accent);font-weight:500}
+button.b:disabled{opacity:.55;cursor:progress}
+button.b:hover:not(:disabled){filter:brightness(1.07)}
+.toggle{display:flex;align-items:center;gap:10px;font-size:.9rem;cursor:pointer;user-select:none}
+.toggle input{width:38px;height:22px;appearance:none;background:var(--line);border-radius:999px;position:relative;cursor:pointer;flex:none;margin:0;transition:background .2s}
+.toggle input::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:16px;height:16px;border-radius:50%;background:var(--panel);transition:inset-inline-start .2s}
+.toggle input:checked{background:var(--accent)} .toggle input:checked::after{inset-inline-start:19px}
+.toggle small{color:var(--muted);display:block;font-size:.78rem}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.stat{background:var(--bg);border-radius:8px;padding:8px 10px;min-width:0}
+.stat b{display:block;font-family:var(--f-num);font-size:1.15rem;font-variant-numeric:tabular-nums}
+.stat span{font-size:.74rem;color:var(--muted)}
+@media (max-width:420px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.status{font-size:.88rem;color:var(--muted);min-height:1.4em}
+.status.err{color:var(--bad)}
+
+.gauge{width:100%;max-width:330px;margin:0 auto;display:block}
+.readout{text-align:center;margin-top:-6px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.pct{font-family:var(--f-num);font-weight:600;font-size:3.1rem;line-height:1;font-variant-numeric:tabular-nums}
+.verdict{padding:3px 12px;border-radius:999px;font-size:.9rem;font-weight:500}
+.v-ok{background:var(--ok-bg);color:var(--ok)} .v-warn{background:var(--warn-bg);color:var(--warn)} .v-bad{background:var(--bad-bg);color:var(--bad)}
+.src{font-size:.78rem;color:var(--muted)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pair div{background:var(--bg);border-radius:8px;padding:8px 10px;text-align:center}
+.pair b{font-family:var(--f-num);font-size:1.2rem;display:block}
+.pair span{font-size:.75rem;color:var(--muted)}
+.summary{font-size:.9rem;background:var(--accent-soft);border-radius:8px;padding:10px 12px}
+.factors{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.factors li{display:grid;grid-template-columns:1fr auto;gap:3px 10px;font-size:.88rem}
+.bar{grid-column:1/-1;height:6px;border-radius:3px;background:var(--bg);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:3px;transition:width .6s}
+.factors .v{font-family:var(--f-num);font-size:.78rem;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.82rem;padding:2px 10px;border-radius:999px;background:var(--warn-bg);color:var(--warn)}
+.empty{color:var(--muted);font-size:.85rem}
+.note{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+
+.result-text{font-size:1.06rem;line-height:2.15;max-height:540px;overflow:auto}
+.s{border-radius:4px;padding:1px 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone;cursor:pointer}
+.s:hover{outline:1px solid var(--line)}
+.s-hi{background:var(--bad-bg)} .s-mid{background:var(--warn-bg)}
+.s.sel{outline:2px solid var(--accent)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-inline-end:6px;vertical-align:-2px}
+.lg-hi::before{background:var(--bad-bg)} .lg-mid::before{background:var(--warn-bg)} .lg-lo::before{background:var(--bg);border:1px solid var(--line)}
+.rw{border:1px solid var(--accent);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;background:var(--accent-soft)}
+.rw .orig{color:var(--muted);font-size:.95rem;text-decoration:line-through;text-decoration-color:var(--bad)}
+.rw .new{font-size:1.05rem;line-height:1.9;white-space:pre-wrap}
+
+.hist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.hist li{display:grid;grid-template-columns:auto minmax(0,1fr) 54px;gap:12px;align-items:center;font-size:.86rem}
+.hist .p{font-family:var(--f-num);font-weight:600;width:46px;text-align:center;border-radius:6px;padding:2px 0}
+.hist .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.hist .d{font-family:var(--f-num);font-size:.74rem;color:var(--muted);text-align:end}
+footer{text-align:center;font-size:.82rem;color:var(--muted);padding-block:6px 0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div id="app" class="lang-ar" dir="rtl" lang="ar">
+<div class="band"><div class="band-in">
+  <div class="brand">
+    <span class="eng" data-t="engTitle">المهندس محمد غرايبة</span>
+    <span class="name" data-t="name">كاشف AI</span>
+    <span class="tool"><b data-t="toolName">افحص نسبة الذكاء الاصطناعي</b> · <span data-t="tagline">قبل ما تسلّم تقريرك</span></span>
+  </div>
+  <div class="seg" role="group" aria-label="Language">
+    <button id="m-ar" aria-pressed="true">العربي</button>
+    <button id="m-en" aria-pressed="false">English</button>
+  </div>
+</div></div>
+
+<main><div class="wrap">
+  <div class="grid">
+    <section class="panel">
+      <div class="label" data-t="inLabel">النص</div>
+      <label class="drop" id="drop" tabindex="0">
+        <input type="file" id="file" accept=".txt,.docx,.pdf" hidden>
+        <span data-th="drop">اسحب ملف هون أو <b>اختار ملف</b> · docx · pdf · txt</span>
+      </label>
+      <textarea id="txt" class="txtfont" data-tp="ph"></textarea>
+      <label class="toggle"><input type="checkbox" id="engMode" checked><span><span data-t="engMode">وضع التقرير الهندسي</span><small data-t="engHint">ما بيحسب المصطلحات والأرقام والوحدات ضدك</small></span></label>
+      <div class="row">
+        <button class="b primary" id="go" data-t="check">افحص النص</button>
+        <button class="b deep" id="deep" hidden data-t="deep">تحليل عميق بـ Claude</button>
+        <button class="b" id="clear" data-t="clear">امسح</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="st-w">0</b><span data-t="sw">كلمة</span></div>
+        <div class="stat"><b id="st-s">0</b><span data-t="ss">جملة</span></div>
+        <div class="stat"><b id="st-a">0</b><span data-t="sa">معدل طول الجملة</span></div>
+        <div class="stat"><b id="st-r">0</b><span data-t="sr">دقائق قراءة</span></div>
+      </div>
+      <div class="status" id="status"></div>
+    </section>
+
+    <section class="panel">
+      <div class="label" data-t="readout">القراءة</div>
+      <svg class="gauge" viewBox="0 0 300 175" aria-hidden="true">
+        <path d="M30 155 A120 120 0 0 1 90 51.1" fill="none" stroke="var(--ok)" stroke-width="14"/>
+        <path d="M90 51.1 A120 120 0 0 1 210 51.1" fill="none" stroke="var(--warn)" stroke-width="14"/>
+        <path d="M210 51.1 A120 120 0 0 1 270 155" fill="none" stroke="var(--bad)" stroke-width="14"/>
+        <g id="ticks"></g>
+        <g id="needle" style="transform-origin:150px 155px;transform:rotate(-90deg);transition:transform .9s cubic-bezier(.3,1.4,.5,1)">
+          <line x1="150" y1="155" x2="150" y2="50" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+        </g>
+        <circle cx="150" cy="155" r="8" fill="var(--ink)"/>
+      </svg>
+      <div class="readout">
+        <div class="pct" id="pct">–</div>
+        <div class="verdict" id="verdict" hidden></div>
+        <div class="src" id="src"></div>
+      </div>
+      <div class="pair" id="pair" hidden>
+        <div><b id="q-p">–</b><span data-t="quick">المقياس السريع</span></div>
+        <div><b id="d-p">–</b><span data-t="deepLbl">تحليل Claude</span></div>
+      </div>
+      <div class="summary" id="summary" hidden></div>
+      <div class="label" data-t="why">ليش هالنتيجة</div>
+      <ul class="factors" id="factors"></ul>
+      <div class="label" data-t="phrasesLbl">عبارات بيكررها الذكاء الاصطناعي</div>
+      <div class="chips" id="chips"></div>
+      <div class="note" data-t="note">كل مواقع الكشف بتغلط، حتى الكبيرة. استخدم النتيجة عشان تعرف شو تعدّل، مش كدليل نهائي.</div>
+    </section>
+  </div>
+
+  <section class="panel">
+    <div class="row spread">
+      <div class="label" data-t="after">النص بعد الفحص · اضغط على أي جملة عشان تعيد صياغتها</div>
+      <div class="legend"><span class="lg-hi" data-t="lgHi">غالبًا آلي</span><span class="lg-mid" data-t="lgMid">مشكوك فيه</span><span class="lg-lo" data-t="lgLo">طبيعي</span></div>
+    </div>
+    <div class="result-text txtfont" id="out"></div>
+    <div class="rw" id="rw" hidden>
+      <div class="label" data-t="rwTitle">إعادة صياغة مقترحة</div>
+      <div class="orig txtfont" id="rw-o"></div>
+      <div class="new txtfont" id="rw-n"></div>
+      <div class="row">
+        <button class="b primary" id="rw-apply" data-t="apply">استبدل بالنص</button>
+        <button class="b" id="rw-copy" data-t="copy">انسخ</button>
+        <button class="b" id="rw-close" data-t="close">سكّر</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="row spread">
+      <div class="label" data-t="history">سجل الفحوصات</div>
+      <div class="row">
+        <button class="b" id="report" data-t="report">نزّل التقرير</button>
+        <button class="b" id="hclear" data-t="hclear">امسح السجل</button>
+      </div>
+    </div>
+    <ul class="hist" id="hist"></ul>
+  </section>
+
+  <footer data-t="footer">© 2026 المهندس محمد غرايبة · BTEC Electrical Engineering</footer>
+</div></main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js"></script>
+<script>
+/* ---------- text for both languages ---------- */
+const T = {
+ ar:{engTitle:"المهندس محمد غرايبة",name:"كاشف AI",toolName:"افحص نسبة الذكاء الاصطناعي",tagline:"قبل ما تسلّم تقريرك",
+  inLabel:"النص",drop:'اسحب ملف هون أو <b>اختار ملف</b> · docx · pdf · txt',ph:"الصق النص هون…",
+  engMode:"وضع التقرير الهندسي",engHint:"ما بيحسب المصطلحات والأرقام والوحدات ضدك",check:"افحص النص",deep:"تحليل عميق بـ Claude",clear:"امسح",
+  sw:"كلمة",ss:"جملة",sa:"معدل طول الجملة",sr:"دقائق قراءة",readout:"القراءة",quick:"المقياس السريع",deepLbl:"تحليل Claude",
+  why:"ليش هالنتيجة",phrasesLbl:"عبارات بيكررها الذكاء الاصطناعي",none:"ما لقيت عبارات من هالنوع",
+  note:"كل مواقع الكشف بتغلط، حتى الكبيرة. استخدم النتيجة عشان تعرف شو تعدّل، مش كدليل نهائي.",
+  after:"النص بعد الفحص · اضغط على أي جملة عشان تعيد صياغتها",lgHi:"غالبًا آلي",lgMid:"مشكوك فيه",lgLo:"طبيعي",
+  outEmpty:'اضغط "افحص النص" وبتطلع الجمل هون ملوّنة.',rwTitle:"إعادة صياغة مقترحة",apply:"استبدل بالنص",copy:"انسخ",copied:"انسخت",close:"سكّر",
+  history:"سجل الفحوصات",report:"نزّل التقرير",hclear:"امسح السجل",histEmpty:"لسا ما فحصت شي. كل فحص بينحفظ هون عشان تشوف النسبة كيف بتنزل مع التعديل.",
+  footer:"© 2026 المهندس محمد غرايبة · BTEC Electrical Engineering",
+  vOk:"غالبًا مكتوب من إنسان",vMid:"مختلط أو مش واضح",vBad:"غالبًا مكتوب بالذكاء الاصطناعي",
+  fUni:"تشابه أطوال الجمل",fPh:"عبارات الذكاء الاصطناعي",fSt:"بدايات جمل رسمية متكررة",fCol:"كلام عفوي وشخصي (بيقلل النسبة)",fTech:"محتوى تقني وأرقام (بيقلل النسبة)",
+  similar:"متقاربة",varied:"متنوعة",many:"كثيرة",few:"قليلة",present:"موجود",absent:"ما في تقريبًا",phr:"عبارة",
+  short:n=>`النص قصير (${n} كلمة)، النتيجة أقل دقة.`,tooShort:"النص قصير كتير، حط 15 كلمة على الأقل.",
+  sampleNote:"النص الموجود مثال للتجربة، امسحه وحط نصك.",done:"تم الفحص.",reading:"عم بقرأ الملف…",
+  fileDone:n=>`تم فحص "${n}".`,noText:"الملف ما فيه نص يتقرأ (ممكن يكون صور ممسوحة).",badType:"الملف لازم يكون docx أو pdf أو txt. ملفات .doc القديمة احفظها كـ docx أول.",readErr:"ما قدرت أقرأ الملف. جرب تنسخ النص وتلصقه.",
+  srcQuick:"المصدر: المقياس السريع",srcMix:"المصدر: دمج المقياس السريع مع تحليل Claude",deepRun:"عم بحلل…",deepDone:"خلص التحليل العميق.",deepErr:"التحليل العميق ما زبط هالمرة. المقياس السريع شغال عادي.",deepRate:"في ضغط، استنى دقيقة وجرب.",
+  rwLocal:"(اقتراح سريع: شلت العبارات الآلية. للتحليل الأقوى استخدم Claude)",rwRun:"عم بكتب صياغة جديدة…",
+  saved:"انحفظ التقرير.",copiedReport:"التقرير انسخ، الصقه بأي ملف.",lang:"العربية"},
+ en:{engTitle:"Eng. Mohammad Gharaibeh",name:"Kashif AI",toolName:"Check how much of your text is AI",tagline:"before you hand it in",
+  inLabel:"Text",drop:'Drop a file here or <b>choose a file</b> · docx · pdf · txt',ph:"Paste your text here…",
+  engMode:"Engineering report mode",engHint:"Technical terms, numbers and units don't count against you",check:"Check text",deep:"Deep analysis with Claude",clear:"Clear",
+  sw:"words",ss:"sentences",sa:"avg sentence length",sr:"min read",readout:"Reading",quick:"Quick meter",deepLbl:"Claude analysis",
+  why:"Why this score",phrasesLbl:"Phrases AI tends to repeat",none:"No phrases of this kind found",
+  note:"Every AI detector makes mistakes, even the big ones. Use the score to see what to rewrite, not as proof.",
+  after:"Checked text · click any sentence to rewrite it",lgHi:"Likely AI",lgMid:"Suspicious",lgLo:"Natural",
+  outEmpty:'Press "Check text" and the sentences will show here, colour-coded.',rwTitle:"Suggested rewrite",apply:"Replace in text",copy:"Copy",copied:"Copied",close:"Close",
+  history:"Check history",report:"Download report",hclear:"Clear history",histEmpty:"Nothing checked yet. Each check is saved here so you can watch the score drop as you edit.",
+  footer:"© 2026 Eng. Mohammad Gharaibeh · BTEC Electrical Engineering",
+  vOk:"Likely human-written",vMid:"Mixed or unclear",vBad:"Likely AI-written",
+  fUni:"Sentence length uniformity",fPh:"AI phrases",fSt:"Repeated formal openers",fCol:"Casual, personal voice (lowers score)",fTech:"Technical content and figures (lowers score)",
+  similar:"similar",varied:"varied",many:"many",few:"few",present:"present",absent:"almost none",phr:"phrases",
+  short:n=>`Short text (${n} words), so the score is less reliable.`,tooShort:"Text is too short. Use at least 15 words.",
+  sampleNote:"The text above is an example. Clear it and paste yours.",done:"Checked.",reading:"Reading file…",
+  fileDone:n=>`Checked "${n}".`,noText:"The file has no readable text (it may be scanned images).",badType:"Use a docx, pdf or txt file. Save old .doc files as .docx first.",readErr:"Couldn't read the file. Try copying and pasting the text.",
+  srcQuick:"Source: quick meter",srcMix:"Source: quick meter combined with Claude analysis",deepRun:"Analysing…",deepDone:"Deep analysis finished.",deepErr:"Deep analysis didn't work this time. The quick meter still works.",deepRate:"Too many requests. Wait a minute and try again.",
+  rwLocal:"(Quick suggestion: AI phrases removed. Use Claude for a stronger rewrite)",rwRun:"Writing a new version…",
+  saved:"Report saved.",copiedReport:"Report copied. Paste it into any file.",lang:"English"}
+};
+
+const SAMPLES = {
+ ar:`يُعد الذكاء الاصطناعي من أبرز التقنيات الحديثة التي تلعب دورًا محوريًا في تطوير مختلف المجالات. وبالإضافة إلى ذلك، فإنه يساهم بشكل كبير في تحسين كفاءة العمل وتقليل الأخطاء البشرية. ومن الجدير بالذكر أن هذه التقنية أصبحت جزءًا لا يتجزأ من حياتنا اليومية.
+امبارح جربت أقيس الجهد على الدارة بالملتيميتر وطلعت القراءة غلط، طلع البروب مش راكب منيح. رجعت ركبته وصارت القراءة 11.8 فولت، يعني قريبة من المتوقع.
+وفي الختام، يمكن القول إن الذكاء الاصطناعي يمثل حجر الزاوية في مستقبل التكنولوجيا، مما يستدعي ضرورة الاستثمار فيه بشكل فعال.`,
+ en:`Artificial intelligence plays a crucial role in shaping the modern technological landscape. Furthermore, it offers a comprehensive range of tools that seamlessly enhance productivity across various industries. It is important to note that AI has become an integral part of our daily lives.
+Yesterday I tried measuring the voltage across R2 and got 4.1 V instead of 5 V. Turns out I'd set the multimeter to the wrong range, so I redid it and got 4.96 V.
+In conclusion, AI serves as a testament to human innovation, and it is vital to leverage its potential responsibly.`
+};
+
+/* ---------- detection rules ---------- */
+const RULES = {
+ ar:{
+  phrases:["في الختام","وفي الختام","ختامًا","بالإضافة إلى ذلك","علاوة على ذلك","فضلًا عن ذلك","من الجدير بالذكر","تجدر الإشارة","يلعب دورًا","تلعب دورًا","دورًا محوريًا","دورًا حيويًا","دورًا هامًا","دورًا بارزًا","دورًا أساسيًا","جزءًا لا يتجزأ","لا غنى عنه","حجر الزاوية","حجر الأساس","بشكل كبير","بشكل فعال","بشكل ملحوظ","مجموعة واسعة","في عصرنا الحالي","في عالمنا اليوم","في ظل التطورات","مما يؤدي إلى","مما يساهم في","مما يستدعي","الأمر الذي","في هذا السياق","من ناحية أخرى","على صعيد آخر","يمكن القول","من أبرز","أداة قوية","في نهاية المطاف","بمثابة","أهمية بالغة","تحقيق التوازن","التحديات والفرص","آفاقًا جديدة","نقلة نوعية","لا يمكن إنكار","بشكل عام","وبالتالي","يُعد من","تُعد من","يعتبر من","يسهم في","يساهم في"],
+  soft:["بشكل عام","وبالتالي","يُعد من","تُعد من","يعتبر من","يسهم في","يساهم في"], /* common in normal technical Arabic */
+  starters:["كما","وكما","علاوة","بالإضافة","وبالإضافة","ومن","وفي","وبالتالي","لذلك","ولذلك","حيث","إذ","وعليه","أيضًا","فضلًا","ختامًا"],
+  colloq:["هيك","هاد","هاي","هدول","بس","كتير","منيح","شو","ليش","وين","هلق","هسا","هسه","امبارح","مبارح","بدي","بدك","بدو","طلع","طلعت","صار","صارت","يعني","عشان","مشان","لسا","لسه","كمان","زي","تبع","تبعت","اشي","إشي","شي","مش","والله","يخي","جربت","قست","ركبت","لاحظت","حسيت"],
+  tech:["فولت","أمبير","اوم","أوم","واط","هيرتز","كيلو","ملي","ميكرو","الجهد","التيار","المقاومة","المكثف","الملف","الدارة","الدائرة","ملتيميتر","أوسيلوسكوب","اوسيلوسكوب","ثلاثي الطور","أحادي الطور","المحول","المحرك","التردد","القدرة","معامل القدرة","المولد","الموجة","طور","نجمة","دلتا","مقاومة","مكثف","ترانزستور","ديود","multisim"],
+  rewrite:[["من الجدير بالذكر أن ",""],["ومن الجدير بالذكر أن ",""],["تجدر الإشارة إلى أن ",""],["وبالإضافة إلى ذلك، ","وأيضًا "],["بالإضافة إلى ذلك، ","وأيضًا "],["علاوة على ذلك، ","وأيضًا "],["فضلًا عن ذلك، ","وأيضًا "],["وفي الختام، ","وأخيرًا، "],["في الختام، ","أخيرًا، "],["يمكن القول إن ",""],["يلعب دورًا محوريًا في","مهم في"],["تلعب دورًا محوريًا في","مهمة في"],["دورًا محوريًا","دورًا مهمًا"],["دورًا حيويًا","دورًا مهمًا"],["جزءًا لا يتجزأ من","جزءًا مهمًا من"],["حجر الزاوية في","أساس"],["حجر الزاوية","الأساس"],["بشكل كبير","كثيرًا"],["بشكل فعال","بنجاح"],["بشكل ملحوظ","بوضوح"],["مما يؤدي إلى","وهذا يسبب"],["مما يستدعي ضرورة","لذلك يجب"],["مما يستدعي","لذلك نحتاج"],["مجموعة واسعة من","كثير من"],["في عصرنا الحالي","اليوم"],["يُعد من أبرز","من أهم"],["تُعد من أبرز","من أهم"]],
+  split:/[^.!؟?\n]+[.!؟?]*\s*|\n+/g
+ },
+ en:{
+  phrases:["in conclusion","furthermore","moreover","additionally","it is important to note","it's important to note","it is worth noting","plays a crucial role","plays a vital role","plays a pivotal role","pivotal","delve","seamless","seamlessly","tapestry","landscape","leverage","robust","comprehensive","in today's","ever-evolving","a testament to","navigate the","foster","underscore","realm","myriad","crucial","vital","integral part","in the realm of","a wide range of","harness","paramount","multifaceted","unlock","embark","showcase","in summary","overall","ultimately","notably"],
+  soft:["overall","crucial","vital","robust","a wide range of","notably"],
+  starters:["furthermore","moreover","additionally","however","overall","thus","therefore","consequently","ultimately","in","notably","similarly","as"],
+  colloq:["i","i'm","i've","i'd","me","my","don't","didn't","can't","won't","it's","that's","wasn't","isn't","yeah","gonna","wanna","kinda","sorta","lol","idk","pretty","stuff","anyway","basically","turns","okay","ok"],
+  tech:["voltage","current","resistance","resistor","capacitor","inductor","ohm","ohms","volts","amps","hz","khz","mhz","kw","watt","watts","multimeter","oscilloscope","circuit","phase","three-phase","transformer","motor","frequency","waveform","power factor","diode","transistor","multisim","star","delta","rms"],
+  rewrite:[["It is important to note that ",""],["it is important to note that ",""],["It is worth noting that ",""],["Furthermore, ","Also, "],["Moreover, ","Also, "],["Additionally, ","Also, "],["In conclusion, ","To sum up, "],["plays a crucial role in","matters a lot for"],["plays a vital role in","matters a lot for"],["plays a pivotal role in","is key to"],["delve into","look at"],["seamlessly ","smoothly "],["seamless","smooth"],["leverage","use"],["utilize","use"],["robust","strong"],["comprehensive","full"],["a wide range of","many"],["a testament to","proof of"],["an integral part of","a big part of"],["the modern technological landscape","modern technology"],["it is vital to","we need to"],["harness","use"],["paramount","very important"]],
+  split:/[^.!?\n]+[.!?]*\s*|\n+/g
+ }
+};
+
+/* ---------- helpers ---------- */
+const $ = id => document.getElementById(id);
+const app=$("app"), txt=$("txt"), statusEl=$("status");
+let lang="ar", last=null, deepRes=null, selIdx=-1, rwText="";
+const t = k => T[lang][k];
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const norm=s=>s.toLowerCase().replace(/[ً-ْـ]/g,"").replace(/[أإآ]/g,"ا").replace(/[’']/g,"'");
+const words=s=>s.split(/\s+/).filter(w=>/[\p{L}\p{N}]/u.test(w));
+const escRe=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+const wordRe=w=>new RegExp("(^|[^\\p{L}'])"+escRe(w)+"(?=$|[^\\p{L}'])","gu");
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const COMP={};
+for(const L of ["ar","en"]){const R=RULES[L];COMP[L]={
+  phrases:R.phrases.map(p=>({p,re:wordRe(norm(p)),soft:R.soft.includes(p)})),
+  colloq:R.colloq.map(w=>wordRe(norm(w))),tech:R.tech.map(w=>wordRe(norm(w))),starters:R.starters.map(norm)};}
+const count=(re,s)=>{re.lastIndex=0;let n=0;while(re.exec(s))n++;return n;};
+function setStatus(msg,err){statusEl.textContent=msg||"";statusEl.className="status"+(err?" err":"");}
+
+/* ---------- quick analysis ---------- */
+function analyze(text){
+  const R=RULES[lang], C=COMP[lang], eng=$("engMode").checked;
+  const sents=[]; let m; R.split.lastIndex=0; while((m=R.split.exec(text))) sents.push(m[0]);
+  const real=sents.filter(s=>words(s).length); const N=words(text).length;
+  if(N<15) return null;
+  const lens=real.map(s=>words(s).length), mean=lens.reduce((a,b)=>a+b,0)/lens.length;
+  const sd=Math.sqrt(lens.reduce((a,b)=>a+(b-mean)**2,0)/lens.length), cv=mean?sd/mean:0;
+  const found=new Map(); let ph=0,col=0,st=0,tech=0,ri=0;
+  const scored=sents.map(s=>{
+    const w=words(s); if(!w.length) return {s,score:-1};
+    const n=norm(s); let sc=32,h=0;
+    for(const x of C.phrases){ if(eng&&x.soft) continue; const k=count(x.re,n); if(k){h+=k;found.set(x.p,(found.get(x.p)||0)+k);} }
+    ph+=h; sc+=Math.min(h,3)*20;
+    let c=0; for(const re of C.colloq) c+=count(re,n); col+=c; sc-=Math.min(c,3)*(lang==="en"?9:17);
+    let tk=0; if(eng){ for(const re of C.tech) tk+=count(re,n); if(/\d/.test(s)) tk+=2; } tech+=tk; sc-=Math.min(tk,3)*6;
+    const first=norm(w[0]).replace(/[^\p{L}]/gu,"");
+    if(C.starters.includes(first)&&!(eng&&first==="حيث")){sc+=10;st++;}
+    if(Math.abs(w.length-mean)<mean*.3) sc+=eng?4:8;
+    if(lang==="ar"&&/[ًٌٍ]/.test(s)) sc+=5;
+    if(/[!؟?]/.test(s)) sc-=6;
+    if(w.length<6) sc-=10;
+    if(!eng&&/\d/.test(s)) sc-=5;
+    return {s,score:clamp(sc,2,98),i:ri++};
+  });
+  const ss=scored.filter(x=>x.score>=0).map(x=>x.score), avg=ss.reduce((a,b)=>a+b,0)/ss.length;
+  const f={uniform:clamp((.8-cv)/.55,0,1)*(eng?.7:1),phrases:clamp(ph/N*100/2.5,0,1),starters:clamp(st/real.length/.4,0,1),
+           colloq:clamp(col/N*100/(lang==="en"?4:2),0,1),tech:eng?clamp(tech/N*100/6,0,1):0};
+  const base=18+30*f.uniform+34*f.phrases+14*f.starters-36*f.colloq-12*f.tech;
+  const pct=Math.round(clamp(.6*base+.4*avg,3,97));
+  return {pct,f,found,scored,N,nS:real.length,mean,phCount:ph};
+}
+
+/* ---------- rendering ---------- */
+(()=>{let g="";for(let i=0;i<=10;i++){const a=Math.PI-(i/10)*Math.PI,r1=102,r2=i%5?96:90;
+  g+=`<line x1="${(150+Math.cos(a)*r1).toFixed(1)}" y1="${(155-Math.sin(a)*r1).toFixed(1)}" x2="${(150+Math.cos(a)*r2).toFixed(1)}" y2="${(155-Math.sin(a)*r2).toFixed(1)}" stroke="var(--muted)" stroke-width="${i%5?1.2:2}"/>`;
+  if(i%5===0)g+=`<text x="${(150+Math.cos(a)*76).toFixed(1)}" y="${(159-Math.sin(a)*76).toFixed(1)}" text-anchor="middle" font-size="11" font-family="IBM Plex Mono,monospace" fill="var(--muted)">${i*10}</text>`;}
+  $("ticks").innerHTML=g;})();
+
+function finalPct(){ if(!last) return null; return deepRes? Math.round(.35*last.pct+.65*deepRes.overall) : last.pct; }
+function sentScore(x){ if(!deepRes||deepRes.map[x.i]==null) return x.score; return Math.round(.35*x.score+.65*deepRes.map[x.i]); }
+
+function render(){
+  const r=last; if(!r){ $("out").innerHTML=`<span class="empty">${t("outEmpty")}</span>`; return; }
+  const p=finalPct();
+  $("needle").style.transform=`rotate(${-90+p*1.8}deg)`;
+  $("pct").textContent=p+"%";
+  const v=$("verdict"); v.hidden=false;
+  v.className="verdict "+(p<35?"v-ok":p<65?"v-warn":"v-bad"); v.textContent=t(p<35?"vOk":p<65?"vMid":"vBad");
+  $("src").textContent=t(deepRes?"srcMix":"srcQuick");
+  $("pair").hidden=!deepRes; $("summary").hidden=!(deepRes&&deepRes.summary);
+  if(deepRes){$("q-p").textContent=r.pct+"%";$("d-p").textContent=deepRes.overall+"%";$("summary").textContent=deepRes.summary||"";}
+  const rows=[[t("fUni"),r.f.uniform,r.f.uniform>.5?t("similar"):t("varied")],[t("fPh"),r.f.phrases,`${r.phCount} ${t("phr")}`],
+    [t("fSt"),r.f.starters,r.f.starters>.5?t("many"):t("few")],[t("fCol"),r.f.colloq,r.f.colloq>.2?t("present"):t("absent")]];
+  if($("engMode").checked) rows.push([t("fTech"),r.f.tech,r.f.tech>.2?t("present"):t("absent")]);
+  $("factors").innerHTML=rows.map(([n,val,s])=>`<li><span>${n}</span><span class="v">${s}</span><span class="bar"><i style="width:${Math.round(val*100)}%"></i></span></li>`).join("")
+    +(r.N<60?`<li><span style="color:var(--warn)">${t("short")(r.N)}</span></li>`:"");
+  $("chips").innerHTML=r.found.size?[...r.found].sort((a,b)=>b[1]-a[1]).map(([q,c])=>`<span class="chip">${esc(q)}${c>1?" ×"+c:""}</span>`).join(""):`<span class="empty">${t("none")}</span>`;
+  $("out").innerHTML=r.scored.map(x=>{
+    if(x.score<0) return x.s.replace(/\n/g,"<br>");
+    const sc=sentScore(x), cls=sc>=62?"s s-hi":sc>=45?"s s-mid":"s";
+    return `<span class="${cls}${x.i===selIdx?" sel":""}" data-i="${x.i}" title="${sc}%" tabindex="0">${esc(x.s).replace(/\n/g,"<br>")}</span>`;
+  }).join("");
+}
+function stats(){
+  const w=words(txt.value).length, R=RULES[lang]; let n=0,m; R.split.lastIndex=0;
+  while((m=R.split.exec(txt.value))) if(words(m[0]).length) n++;
+  $("st-w").textContent=w; $("st-s").textContent=n; $("st-a").textContent=n?Math.round(w/n):0; $("st-r").textContent=Math.max(w?1:0,Math.round(w/200));
+}
+
+/* ---------- history (this browser only) ---------- */
+const HK="ghraibeh-ai-meter-history";
+function loadHist(){try{return JSON.parse(localStorage.getItem(HK)||"[]");}catch(e){return [];}}
+function saveHist(h){try{localStorage.setItem(HK,JSON.stringify(h.slice(0,10)));}catch(e){}}
+function pushHist(p){if(txt.value===SAMPLES[lang])return;const h=loadHist();const snip=txt.value.trim().replace(/\s+/g," ").slice(0,90);
+  if(h[0]&&h[0].snip===snip){h[0].p=p;h[0].d=Date.now();}else h.unshift({p,snip,lang,d:Date.now()}); saveHist(h); renderHist();}
+function renderHist(){const h=loadHist(), el=$("hist");
+  if(!h.length){el.innerHTML=`<li><span class="empty" style="grid-column:1/-1">${t("histEmpty")}</span></li>`;return;}
+  el.innerHTML=h.map(x=>{const c=x.p<35?"v-ok":x.p<65?"v-warn":"v-bad";const d=new Date(x.d);
+    return `<li><span class="p ${c}">${x.p}%</span><span class="t" dir="auto">${esc(x.snip)}</span><span class="d">${String(d.getDate()).padStart(2,"0")}/${String(d.getMonth()+1).padStart(2,"0")}</span></li>`;}).join("");}
+
+/* ---------- actions ---------- */
+function run(){
+  deepRes=null; selIdx=-1; $("rw").hidden=true;
+  last=analyze(txt.value);
+  if(!last){setStatus(t("tooShort"),true);return;}
+  setStatus(t("done")); render(); pushHist(finalPct());
+}
+function setLang(L){
+  lang=L; app.className="lang-"+L; app.dir=L==="ar"?"rtl":"ltr"; app.lang=L;
+  $("m-ar").setAttribute("aria-pressed",L==="ar"); $("m-en").setAttribute("aria-pressed",L==="en");
+  document.querySelectorAll("[data-t]").forEach(e=>e.textContent=T[L][e.dataset.t]);
+  document.querySelectorAll("[data-th]").forEach(e=>e.innerHTML=T[L][e.dataset.th]);
+  document.querySelectorAll("[data-tp]").forEach(e=>e.placeholder=T[L][e.dataset.tp]);
+  document.title=L==="ar"?"كاشف AI | فحص نسبة الذكاء الاصطناعي بالعربي والإنجليزي":"Kashif AI | AI text detector (Arabic & English)";
+  try{localStorage.setItem(HK+"-lang",L);}catch(e){}
+}
+function switchLang(L){
+  if(L===lang) return;
+  const wasSample=!txt.value.trim()||txt.value===SAMPLES[lang];
+  setLang(L); if(wasSample) txt.value=SAMPLES[L];
+  stats(); run(); renderHist(); if(wasSample) setStatus(t("sampleNote"));
+}
+$("m-ar").onclick=()=>switchLang("ar"); $("m-en").onclick=()=>switchLang("en");
+$("go").onclick=run;
+$("engMode").onchange=()=>{ if(last) run(); };
+$("clear").onclick=()=>{txt.value="";last=null;deepRes=null;stats();setStatus("");$("rw").hidden=true;render();txt.focus();};
+txt.addEventListener("input",stats);
+
+/* rewrite */
+function localRewrite(s){let o=s;for(const[a,b]of RULES[lang].rewrite)o=o.split(a).join(b);
+  o=o.replace(/\s{2,}/g," ").replace(/^\s*([\p{Ll}])/u,c=>c.toUpperCase()); return o.trim();}
+async function openRewrite(i){
+  const x=last&&last.scored.find(y=>y.i===i); if(!x) return;
+  selIdx=i; render(); const box=$("rw"); box.hidden=false;
+  $("rw-o").textContent=x.s.trim(); rwText=localRewrite(x.s);
+  const sample=window._sample;
+  if(!sample){ $("rw-n").textContent=rwText+"\n"+t("rwLocal"); box.scrollIntoView({block:"nearest",behavior:"smooth"}); return; }
+  $("rw-n").textContent=t("rwRun"); box.scrollIntoView({block:"nearest",behavior:"smooth"});
+  const eng=$("engMode").checked;
+  const prompt=`Rewrite the sentence below so it reads like a capable high-school student wrote it in their own words: simpler, less formulaic, no stock phrases (like "furthermore", "plays a crucial role", "علاوة على ذلك", "يلعب دورًا محوريًا"). Keep the meaning and every technical fact, number and unit. Keep the same language (${lang==="ar"?"Arabic, in clear Modern Standard Arabic suitable for a school report, not dialect":"English"}).${eng?" It is from an electrical engineering school report.":""} Reply with the rewritten sentence only.\n\nSentence:\n${x.s.trim()}`;
+  try{
+    const res=await sample(prompt,{modelTier:"quick",onText:({text})=>{ if(selIdx===i) $("rw-n").textContent=text; }});
+    if(selIdx===i){rwText=res.text.trim();$("rw-n").textContent=rwText;}
+  }catch(e){ if(selIdx===i){$("rw-n").textContent=rwText+"\n"+t("rwLocal");} if(e&&e.code==="not_granted"){window._sample=null;$("deep").hidden=true;} }
+}
+$("out").addEventListener("click",e=>{const s=e.target.closest(".s");if(s)openRewrite(+s.dataset.i);});
+$("out").addEventListener("keydown",e=>{const s=e.target.closest(".s");if(s&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openRewrite(+s.dataset.i);}});
+$("rw-close").onclick=()=>{$("rw").hidden=true;selIdx=-1;render();};
+$("rw-copy").onclick=async()=>{const b=$("rw-copy");try{await navigator.clipboard.writeText(rwText);b.textContent=t("copied");setTimeout(()=>b.textContent=t("copy"),1500);}catch(e){const r=document.createRange();r.selectNodeContents($("rw-n"));const sl=getSelection();sl.removeAllRanges();sl.addRange(r);}};
+$("rw-apply").onclick=()=>{const x=last&&last.scored.find(y=>y.i===selIdx);if(!x)return;
+  txt.value=txt.value.replace(x.s.trim(),rwText); stats(); run(); setStatus(t("done"));};
+
+/* deep analysis with Claude */
+$("deep").onclick=async()=>{
+  const sample=window._sample; if(!sample) return;
+  if(!last){run(); if(!last) return;}
+  const btn=$("deep"); btn.disabled=true; btn.textContent=t("deepRun");
+  const list=last.scored.filter(x=>x.score>=0).slice(0,150);
+  const body=list.map(x=>`[${x.i}] ${x.s.trim().slice(0,400)}`).join("\n");
+  const prompt=`You are a careful AI-generated-text detector. Judge how likely each numbered sentence was written by an AI model (ChatGPT, Gemini, Claude) rather than by a student, using style signals: stock phrases, generic claims without specifics, uniform rhythm, over-polished transitions, lack of personal detail or real measurements. ${$("engMode").checked?"The text is from a high-school electrical engineering report; technical terms, formulas, units and measured values are normal for a human and are not evidence of AI. ":""}Language of the text: ${T[lang].lang}. Be calibrated: plain, specific, slightly imperfect writing should score low.
+Return only JSON: {"overall": integer 0-100, "summary": "two short sentences in ${lang==="ar"?"Arabic (Levantine-friendly, simple)":"English"} explaining the main reasons and what to change", "sentences": [{"i": number, "score": integer 0-100}]}
+
+Sentences:
+${body}`;
+  try{
+    const res=await sample.json(prompt,{modelTier:"default"});
+    const map={}; (res.sentences||[]).forEach(s=>{ if(Number.isFinite(+s.i)&&Number.isFinite(+s.score)) map[+s.i]=clamp(Math.round(+s.score),0,100); });
+    const ov=clamp(Math.round(+res.overall),0,100); if(!Number.isFinite(ov)) throw {code:"bad"};
+    deepRes={overall:ov,summary:String(res.summary||""),map};
+    render(); pushHist(finalPct()); setStatus(t("deepDone"));
+  }catch(e){
+    if(e&&e.code==="not_granted"){window._sample=null;btn.hidden=true;}
+    setStatus(e&&e.code==="rate_limited"?t("deepRate"):t("deepErr"),true);
+  }finally{btn.disabled=false;btn.textContent=t("deep");}
+};
+
+/* report */
+function reportText(){
+  if(!last) return null; const p=finalPct(), d=new Date();
+  const top=last.scored.filter(x=>x.score>=0).map(x=>({s:x.s.trim(),sc:sentScore(x)})).filter(x=>x.sc>=45).sort((a,b)=>b.sc-a.sc).slice(0,15);
+  const L=lang==="ar";
+  return [L?"تقرير كاشف AI":"Kashif AI report", T[lang].engTitle, "—".repeat(30),
+   (L?"التاريخ: ":"Date: ")+d.toLocaleString(L?"ar-JO":"en-GB"),
+   (L?"النسبة: ":"Score: ")+p+"% — "+t(p<35?"vOk":p<65?"vMid":"vBad"),
+   (L?"المقياس السريع: ":"Quick meter: ")+last.pct+"%"+(deepRes?(L?" · تحليل Claude: ":" · Claude analysis: ")+deepRes.overall+"%":""),
+   (L?"عدد الكلمات: ":"Words: ")+last.N, deepRes&&deepRes.summary?"\n"+deepRes.summary:"",
+   "\n"+(L?"عبارات آلية: ":"AI phrases: ")+([...last.found.keys()].join("، ")||"—"),
+   "\n"+(L?"جمل لازم تتعدل:":"Sentences to rewrite:"), ...top.map(x=>`(${x.sc}%) ${x.s}`),
+   "\n"+t("note")].filter(Boolean).join("\n");
+}
+$("report").onclick=async()=>{
+  const r=reportText(); if(!r){setStatus(t("tooShort"),true);return;}
+  const dl=window._downloads;
+  if(dl){ try{ await dl.save({filename:(lang==="ar"?"تقرير-كاشف-AI":"kashif-ai-report")+".txt",data:new Blob(["﻿"+r],{type:"text/plain;charset=utf-8"})}); setStatus(t("saved")); return; }catch(e){ if(e&&e.code==="declined") return; } }
+  try{ await navigator.clipboard.writeText(r); setStatus(t("copiedReport")); }catch(e){ setStatus(t("readErr"),true); }
+};
+$("hclear").onclick=()=>{saveHist([]);renderHist();};
+
+/* files */
+async function readFile(file){
+  setStatus(t("reading"));
+  try{
+    const n=file.name.toLowerCase(); let text="";
+    if(n.endsWith(".txt")) text=await file.text();
+    else if(n.endsWith(".docx")) text=(await mammoth.extractRawText({arrayBuffer:await file.arrayBuffer()})).value;
+    else if(n.endsWith(".pdf")){
+      pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
+      const pdf=await pdfjsLib.getDocument({data:new Uint8Array(await file.arrayBuffer())}).promise;
+      for(let i=1;i<=pdf.numPages;i++){const c=await(await pdf.getPage(i)).getTextContent();text+=c.items.map(it=>it.str).join(" ")+"\n";}
+    } else throw new Error("type");
+    text=text.trim(); if(!text){setStatus(t("noText"),true);return;}
+    const arabic=(text.match(/[؀-ۿ]/g)||[]).length, latin=(text.match(/[A-Za-z]/g)||[]).length;
+    if(arabic>latin&&lang!=="ar") setLang("ar"); else if(latin>arabic*1.5&&lang!=="en") setLang("en");
+    txt.value=text; stats(); run(); renderHist(); setStatus(t("fileDone")(file.name));
+  }catch(e){ setStatus(e.message==="type"?t("badType"):t("readErr"),true); }
+}
+const drop=$("drop"), fileIn=$("file");
+fileIn.onchange=()=>{if(fileIn.files[0])readFile(fileIn.files[0]);fileIn.value="";};
+drop.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();fileIn.click();}});
+["dragenter","dragover"].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add("over");}));
+["dragleave","drop"].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove("over");}));
+drop.addEventListener("drop",e=>{const f=e.dataTransfer.files[0];if(f)readFile(f);});
+
+/* start */
+let startLang="ar"; try{startLang=localStorage.getItem(HK+"-lang")||"ar";}catch(e){}
+setLang(startLang==="en"?"en":"ar"); txt.value=SAMPLES[lang]; stats(); run(); renderHist(); setStatus(t("sampleNote"));
+/* light up Claude features where the viewer offers them; the page works fully without them */
+if(window.claude&&claude.use){
+  claude.use("sample").then(s=>{ if(s){window._sample=s;$("deep").hidden=false;} }).catch(()=>{});
+  claude.use("downloads").then(d=>{ if(d) window._downloads=d; }).catch(()=>{});
+}
+</script>
+
+</body>
+</html>
